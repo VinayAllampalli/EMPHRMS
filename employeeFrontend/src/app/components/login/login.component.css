@@ -1,0 +1,9 @@
+.card{
+    background-image: url('../../../assets/images/Gray-plain-website-background.jpg');
+    margin-top: 13%;
+    text-align: center;
+    color: white;
+    border:2px solid;
+    border-color:white;
+    font-size: 2vw;
+}

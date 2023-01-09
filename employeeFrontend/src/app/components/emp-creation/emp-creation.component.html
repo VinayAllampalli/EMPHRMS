@@ -1,0 +1,141 @@
+<div class="container text-center">
+    <div class="d-flex justify-content-center">
+        <mat-card class="card">
+            <mat-card-label class="text">Employee Creation</mat-card-label>
+            <form [formGroup]="form" (ngSubmit)="submitform()">
+                <div class="row g-3">
+                    <div class="container text-start">
+                        <h3 style="margin-top: 3%;color:#203a43;">Personal Info</h3>
+                        <hr style="margin:0%;color:#203a43;">
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>FirstName</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="firstName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Email</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="email">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>D.O.B</mat-label>
+                            <input matInput [matDatepicker]="date" [min]="currentDate" formControlName="DOB">
+                            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                            <mat-datepicker #date></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Gender</mat-label>
+                            <mat-select formControlName="gender">
+                                <mat-option *ngFor="let loc of gender" [value]="loc">
+                                    {{loc}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>LastName</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="lastName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Phone Number</mat-label>
+                            <input class="pointer" matInput type="tel" formControlName="phoneNo">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>FatherName / MotherName</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="FatherName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput type="text" formControlName="address">
+                                   </textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="container text-start">
+                        <h3 style="color:#203a43;">Employee Statutory Info & Payment Info</h3>
+                        <hr style="margin:0%;color:#203a43;">
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Aadhar Number</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="AadharNumber">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Pan Number</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="PanNumber">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>PF/UAN Number</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="UanNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Bank Acc Number</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="bankAccNumber">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Bank Name</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="bankName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Bank IFSC Code</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="bankIfscCode">
+                        </mat-form-field>
+                    </div>
+                    <div class="container text-start">
+                        <h3 style="color:#203a43;">Employee Details</h3>
+                        <hr style="margin:0%;color:#203a43;">
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Date Of Joining</mat-label>
+                            <input matInput [matDatepicker]="date1" [min]="currentDate" formControlName="DOJ">
+                            <mat-datepicker-toggle matSuffix [for]="date1"></mat-datepicker-toggle>
+                            <mat-datepicker #date1></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Role</mat-label>
+                            <mat-select formControlName="role">
+                                <mat-option *ngFor="let x of role" [value]="x">
+                                    {{x}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Employee Code</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="EmpCode">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Department</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="department">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Reporting Manager</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="ReportingManager">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Reporting Manger Id</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Create Password</mat-label>
+                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
+                                formControlName="password">
+                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
+                                'visibility'}}
+                            </mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="container text-center">
+                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                            (click)="submitform()" style=" border:2px solid;
+                        border-color:#203a43;"></button>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

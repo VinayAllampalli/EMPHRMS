@@ -1,0 +1,42 @@
+<div class="container text-center">
+    <div class="d-flex justify-content-center">
+        <mat-card class="card">
+            <mat-card-label class="text">Organization/Company Creation</mat-card-label>
+            <form [formGroup]="form" (ngSubmit)="submitform()">
+                <div class="row g-3">
+                    <div class="col" style="margin-top:5%">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Company Name</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="companyName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Email</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="companyMailId">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Company Branch</mat-label>
+                            <input class="pointer" matInput type="text" formControlName="companyBranch">
+                        </mat-form-field>
+                    </div>
+                    <div class="col" style="margin-top:5%">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>PhoneNo</mat-label>
+                            <input class="pointer" matInput matInput type="tel" formControlName="companyPhoneNo">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Address</mat-label>
+                            <textarea class="pointer" matInput type="text" formControlName="companyAddress">
+                                </textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="container text-center">
+                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                            (click)="submitform()" style=" border:2px solid;
+                        border-color:#203a43;"></button>
+                    </div>
+                    </div>
+                    </form>
+                    </mat-card>
+                    </div>
+                    </div>
+                

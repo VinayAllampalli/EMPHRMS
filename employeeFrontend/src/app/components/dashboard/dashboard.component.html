@@ -1,0 +1,94 @@
+<h2 style="font-family: Brush Script MT, Lucida Handwriting, Cursive;font-weight: 200;color:#203a43;margin-left:1%;">
+    {{x}},{{name}}</h2>
+<div class="d-flex flex-row mb-3">
+    <div class="d-flex flex-column">
+        <!-- <div class="row"> -->
+        <mat-card class="card" style=" background: linear-gradient(to bottom, #f5b2fe, #e0c6ec);">
+            <div class="d-flex flex-row">
+                <span>
+                    <h3 style="font-weight: bold; color:rgb(146, 80, 132) ;">TODAY DATE - {{date}} {{dayName}}</h3>
+                    <h4>Current Time </h4>
+
+                    <p style=" font-size:25px;font-weight: bold;color:rgb(146, 80, 132)">{{dateTime | date:'HH:mm:ss'}}
+                    </p>
+                </span>
+            </div>
+        </mat-card>
+        <mat-card class="card">
+            <div class="d-flex flex-row">
+                <img class="logo" src="../../../assets/images/in.jpg">
+                <div>
+                    <h3>INBOX</h3>
+                    <span>All done</span>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="card" style="background-image:url('../../../assets/images/Capture.JPG')">
+            <h3>Holidays</h3>
+            <p>No Holidays this week</p>
+        </mat-card>
+        <mat-card class="card">
+            <h3>Leaves Balance</h3>
+        </mat-card>
+    </div>
+    <div class="d-flex flex-column">
+        <mat-card class="card" style="height:225px">
+            <p-tabView>
+                <p-tabPanel header="Post">
+                    Post
+                </p-tabPanel>
+                <p-tabPanel header="Announcement">
+                    Announcement
+                </p-tabPanel>
+            </p-tabView>
+        </mat-card>
+
+
+        <mat-accordion class="card">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title style="margin-top:2px">
+                        
+                        <p class="text">Today<p> - &nbsp;&nbsp;<span class="dot"><mat-icon style="color:red" class="dot">cake</mat-icon></span> &nbsp; <p class="text"> {{todayDob}} BIRTHDAY <p> &nbsp;
+                            <span class="dot"><mat-icon style="color:rgb(95, 89, 4);background-color: rgb(218, 206, 45);" class="dot">grade</mat-icon></span> &nbsp; <p class="text"> {{todayDoj}} Work Anniversaries <p>
+                        
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                    <mat-tab label="Birthday">
+                         <div style="margin-top:10%;text-align:center">
+                         <span *ngIf="birthday==0">
+                            <h1 class="text">No birthdays Today</h1>
+                        </span>
+                        <span *ngIf="birthday!=0">
+                            <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
+                        <h1 *ngFor="let x of birthday" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}
+                            
+                        </h1>
+                        </span>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="Work Anniversaries"> 
+                        <div style="margin-top:10%;text-align:center">
+                            <span *ngIf="work==0">
+                               <h1 class="text">No Work Anniversaries Today</h1>
+                           </span>
+                           <span *ngIf="work!=0">
+                               <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
+                           <h1 *ngFor="let x of work" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}</h1>
+                           </span>
+                         </div>
+                        
+                    </mat-tab>
+                  </mat-tab-group>
+            
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+
+    </div>
+</div>
