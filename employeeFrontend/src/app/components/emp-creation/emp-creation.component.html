@@ -1,3 +1,9 @@
+<div class="container text-end">
+    <button pButton pRipple type="button" label="Add Company" class="p-button-rounded p-button-success"
+        (click)="company()">
+        <mat-icon>domain</mat-icon>
+    </button>
+</div>
 <div class="container text-center">
     <div class="d-flex justify-content-center">
         <mat-card class="card">
@@ -121,6 +127,10 @@
                             <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
                         </mat-form-field>
                         <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Company Mail Id</mat-label>
+                            <input class="pointer" matInput type="email" formControlName="CompanymailId">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
                             <mat-label>Create Password</mat-label>
                             <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
                                 formControlName="password">
@@ -132,7 +142,7 @@
                     <div class="container text-center">
                         <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
                             (click)="submitform()" style=" border:2px solid;
-                        border-color:#203a43;"></button>
+                        border-color:#fdfdfd;"></button>
                     </div>
                 </div>
             </form>

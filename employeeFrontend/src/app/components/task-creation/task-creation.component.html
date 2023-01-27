@@ -1,1 +1,71 @@
-<p>task-creation works!</p>
+<div class="container text-center">
+  <div class="d-flex justify-content-center">
+    <mat-card class="card">
+      <div class="row g-3">
+        <div class="col">
+
+          <p-dropdown [options]="empcodes" [(ngModel)]="newItem.userEmpCode" placeholder="Select a EmpCode"
+            [showClear]="true">
+          </p-dropdown>
+        </div>
+        <div class="col">
+
+          <p-calendar [(ngModel)]="newItem.startDate" placeholder="Select Task Start Date" [showIcon]="true"
+            [(ngModel)]="date1"></p-calendar>
+        </div>
+        <div class="col">
+
+          <p-calendar [(ngModel)]="newItem.endDate" placeholder="Select Task End Date" [showIcon]="true"
+            [(ngModel)]="date2"></p-calendar>
+        </div>
+        <div class="col">
+          <p-dropdown [options]="status" [(ngModel)]="newItem.status" placeholder="Status" [showClear]="true">
+          </p-dropdown>
+        </div>
+        <div class="row">
+          <textarea class="form-control" style="width:100%;margin-top:2%;" type="text" required
+            [(ngModel)]="newItem.taskDescription" placeholder="Enter Task Details"></textarea>
+        </div>
+        <div class="col">
+          <button pButton pRipple label="Add Task" class="p-button-rounded" (click)="addItems()"></button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="d-flex justify-content-center">
+    <mat-card class="card">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Assigned To </th>
+            <th scope="col">Task Description</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let item of items; let i = index">
+            <td>{{item.userEmpCode}}</td>
+            <td>{{item.taskDescription}}</td>
+            <td>{{sDate}}</td>
+            <td>{{eDate}}</td>
+            <td>{{item.status}}</td>
+            <td>
+              <i (click)="removeItem(i)" class="pi pi-trash" style="color:red"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="items.length > 0">
+        <div class="col container text-center ">
+          <div class="d-flex justify-content-center">
+            <button pButton pRipple label="Submit" class="p-button-rounded" (click)="submit()"></button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

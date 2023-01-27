@@ -8,7 +8,6 @@
                 <span>
                     <h3 style="font-weight: bold; color:rgb(146, 80, 132) ;">TODAY DATE - {{date}} {{dayName}}</h3>
                     <h4>Current Time </h4>
-
                     <p style=" font-size:25px;font-weight: bold;color:rgb(146, 80, 132)">{{dateTime | date:'HH:mm:ss'}}
                     </p>
                 </span>
@@ -30,28 +29,22 @@
         <mat-card class="card">
             <h3>Leaves Balance</h3>
         </mat-card>
-    </div>
-    <div class="d-flex flex-column">
-        <mat-card class="card" style="height:225px">
-            <p-tabView>
-                <p-tabPanel header="Post">
-                    Post
-                </p-tabPanel>
-                <p-tabPanel header="Announcement">
-                    Announcement
-                </p-tabPanel>
-            </p-tabView>
-        </mat-card>
-
-
         <mat-accordion class="card">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title style="margin-top:2px">
-                        
-                        <p class="text">Today<p> - &nbsp;&nbsp;<span class="dot"><mat-icon style="color:red" class="dot">cake</mat-icon></span> &nbsp; <p class="text"> {{todayDob}} BIRTHDAY <p> &nbsp;
-                            <span class="dot"><mat-icon style="color:rgb(95, 89, 4);background-color: rgb(218, 206, 45);" class="dot">grade</mat-icon></span> &nbsp; <p class="text"> {{todayDoj}} Work Anniversaries <p>
-                        
+                        <p class="text">Today
+                        <p> - &nbsp;&nbsp;<span class="dot">
+                                <mat-icon style="color:red" class="dot">cake</mat-icon>
+                            </span> &nbsp;
+                        <p class="text"> {{todayDob}} BIRTHDAY
+                        <p> &nbsp;
+                            <span class="dot">
+                                <mat-icon style="color:rgb(255, 229, 145);background-color: rgb(218, 143, 45);"
+                                    class="dot">grade</mat-icon>
+                            </span> &nbsp;
+                        <p class="text"> {{todayDoj}} Work Anniversaries
+                        <p>
                     </mat-panel-title>
                     <!-- <mat-panel-description>
                         Currently I am {{panelOpenState ? 'open' : 'closed'}}
@@ -59,36 +52,67 @@
                 </mat-expansion-panel-header>
                 <mat-tab-group>
                     <mat-tab label="Birthday">
-                         <div style="margin-top:10%;text-align:center">
-                         <span *ngIf="birthday==0">
-                            <h1 class="text">No birthdays Today</h1>
-                        </span>
-                        <span *ngIf="birthday!=0">
-                            <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
-                        <h1 *ngFor="let x of birthday" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}
-                            
-                        </h1>
-                        </span>
-                      </div>
+                        <div style="margin-top:10%;text-align:center">
+                            <span *ngIf="birthday==0">
+                                <h1 class="text">No birthdays Today</h1>
+                            </span>
+                            <span *ngIf="birthday!=0">
+                                <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
+                                <h1 *ngFor="let x of birthday" class="text"> HAPPY BIRTHDAY {{x.firstname}}
+                                    {{x.lastname}}
+                                </h1>
+                            </span>
+                        </div>
                     </mat-tab>
-                    <mat-tab label="Work Anniversaries"> 
+                    <mat-tab label="Work Anniversaries">
                         <div style="margin-top:10%;text-align:center">
                             <span *ngIf="work==0">
-                               <h1 class="text">No Work Anniversaries Today</h1>
-                           </span>
-                           <span *ngIf="work!=0">
-                               <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
-                           <h1 *ngFor="let x of work" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}</h1>
-                           </span>
-                         </div>
-                        
+                                <h1 class="text">No Work Anniversaries Today</h1>
+                            </span>
+                            <span *ngIf="work!=0">
+                                <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
+                                <h1 *ngFor="let x of work" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}
+                                </h1>
+                            </span>
+                        </div>
                     </mat-tab>
-                  </mat-tab-group>
-            
+                </mat-tab-group>
             </mat-expansion-panel>
         </mat-accordion>
-
-
+    </div>
+    <div class="d-flex flex-column">
+        <mat-card class="card">
+            <p-tabView>
+                <p-tabPanel header="Post">
+                    <span *ngFor="let item of Feed ">
+                        <h4 class="data">{{item.postby}}</h4>
+                        <h6 class="data">{{postdate}} {{item.posttime}}</h6>
+                        <h3 class="data">{{item.post}}</h3>
+                        <hr>
+                    </span>
+                    <form [formGroup]="emojiForm">
+                        <mat-form-field appearance="outline" style="width:100%;">
+                            <textarea matInput type="text" formControlName="post" placeholder="Enter Post Here....!">
+                                   </textarea>
+                            <button pButton pRipple type="button" (click)="onclick()"
+                                class="p-button-rounded p-button-secondary">
+                                <mat-icon>mood</mat-icon>
+                            </button>
+                            <button pButton pRipple type="button" icon="pi pi-send" (click)="post()"
+                                class="p-button-rounded p-button-secondary" style="margin-left:280px"></button>
+                            <ng-container *ngIf="visible">
+                                <div class="row d-flex justify-content-end">
+                                    <emoji-mart (emojiClick)="addEmoji($event)"></emoji-mart>
+                                </div>
+                            </ng-container>
+                        </mat-form-field>
+                    </form>
+                </p-tabPanel>
+                <p-tabPanel header="Announcement">
+                    Announcement
+                </p-tabPanel>
+            </p-tabView>
+        </mat-card>
 
     </div>
 </div>

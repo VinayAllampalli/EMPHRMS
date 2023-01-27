@@ -1,0 +1,15 @@
+<mat-card class="card">
+    <div class="d-flex justify-content-center">
+        <img class="circle" src="{{ pic }}">
+    </div>
+    <div class="row">
+        <span *ngFor="let details of res">
+            <h2 class="data">Name: {{details.firstname}} {{details.lastname}}</h2>
+            <h2 class="data">Emp Code : {{empcode}}</h2>
+            <h2 class="data">Dept : {{details.department}}</h2>
+            <h2 class="data">Ph.No : {{details.phoneno}}</h2>
+            <hr style="margin-top: 2%; border: 1px solid #203a43; opacity: 1">
+            <h2 class="data" >{{company}}</h2>
+        </span>
+    </div>
+</mat-card>

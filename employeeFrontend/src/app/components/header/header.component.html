@@ -1,41 +1,61 @@
 <div class="d-flex flex-column mb-3">
-    <mat-toolbar style="background-image: url('../../../assets/images/Gray-plain-website-background.jpg');">
-       
-        <span style="color:white">My App</span>
-        <span class="example-spacer"></span>
-
-        <button style="color:white" mat-button [matMenuTriggerFor]="menu2">Task
-          <i class="pi pi-angle-down"></i>
+  <mat-toolbar style="
+      background-image: url('../../../assets/images/Gray-plain-website-background.jpg');
+    ">
+    <span style="color: white">My App</span>
+    <span class="example-spacer"></span>
+    <button style="color: white" mat-button [routerLink]="['dashboard']">
+      Dashboard
+    </button>
+    <button style="color: white" mat-button [matMenuTriggerFor]="menu2">
+      Task
+      <i class="pi pi-angle-down"></i>
+    </button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item class="menu" [routerLink]="['taskCreation']"
+        *ngIf="role == 'TL' || role == 'Manager' || role == 'Admin'" [routerLinkActive]="['is-active']">
+        Create Task
       </button>
-      <mat-menu #menu2="matMenu">
-        <button mat-menu-item class="menu" [routerLink]="['taskCreation']">Create Task</button>
-        <button mat-menu-item class="menu">My Task</button>
-      </mat-menu>
+      <button mat-menu-item class="menu" [routerLink]="['task']"
+        *ngIf="role == 'TL' || role == 'Employee' || role == 'Admin'">
+        My Task
+      </button>
+    </mat-menu>
 
-        <button style="color:white" mat-button [matMenuTriggerFor]="menu">Employee 
-            <i class="pi pi-angle-down"></i>
-        </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item class="menu" [routerLink]="['attendance']">Attendance</button>
-            <button mat-menu-item class="menu">Permission</button>
-            <button mat-menu-item class="menu" [routerLink]="['checkInOut']">CheckIn/Out</button>
-            <button mat-menu-item class="menu" [routerLink]="['empCreation']">Create Employee</button>
-            <button mat-menu-item class="menu" [routerLink]="['orgCreation']">Create Org</button>
-            
-          </mat-menu>
-
-          <button style="color:white" mat-button [matMenuTriggerFor]="menu1">Profile
-            <i class="pi pi-angle-down"></i>
-        </button>
-          <mat-menu #menu1="matMenu">
-            <li mat-menu-item class="menu">
-                <i class="pi pi-user"></i>
-                My Profile</li>
-            <li mat-menu-item class="menu" (click)="logout()">
-                <i class="pi pi-power-off"></i>
-                Logout</li>     
-          </mat-menu>
-          <i class="pi pi-home" style="color:white;font-size: 1.2rem" matTooltip="Home" [routerLink]="['dashboard']"></i>
-      </mat-toolbar>
+    <button style="color: white" mat-button [matMenuTriggerFor]="menu">
+      Employee
+      <i class="pi pi-angle-down"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="menu" [routerLink]="['attendance']">
+        Attendance
+      </button>
+      <button mat-menu-item class="menu">Apply For Leaves</button>
+      <button mat-menu-item class="menu" [routerLink]="['checkInOut']">
+        CheckIn/Out
+      </button>
+      <button mat-menu-item class="menu" [routerLink]="['empCreation']" *ngIf="role == 'Admin' || role == 'Manager'">
+        Create Employee
+      </button>
+      <button mat-menu-item class="menu" [routerLink]="['orgCreation']" *ngIf="role == 'Admin'">
+        Create Org
+      </button>
+    </mat-menu>
+    <!-- <button style="color:white" mat-button [routerLink]="['Finance']">My Finance</button> -->
+    <button style="color: white" mat-button [matMenuTriggerFor]="menu1">
+      Profile
+      <i class="pi pi-angle-down"></i>
+    </button>
+    <mat-menu #menu1="matMenu">
+      <li mat-menu-item class="menu" [routerLink]="['profile']">
+        <i class="pi pi-user"></i>
+        My Profile
+      </li>
+      <li mat-menu-item class="menu" (click)="logout()">
+        <i class="pi pi-power-off"></i>
+        Logout
+      </li>
+    </mat-menu>
+  </mat-toolbar>
 </div>
 <router-outlet></router-outlet>

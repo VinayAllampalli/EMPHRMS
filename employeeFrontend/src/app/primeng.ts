@@ -5,6 +5,9 @@ import {MenubarModule} from 'primeng/menubar';
 import {CardModule} from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';
 import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
+import {CheckboxModule} from 'primeng/checkbox';
+
 @NgModule({
     exports:[
         ButtonModule,
@@ -12,7 +15,10 @@ import {CalendarModule} from 'primeng/calendar';
         MenubarModule,
         CardModule,
         TabViewModule,
-        CalendarModule
+        CalendarModule,
+        DropdownModule,
+        CheckboxModule,
+       
     ]
 })
 export class PrimeNgModule{}

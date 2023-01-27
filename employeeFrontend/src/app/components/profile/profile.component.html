@@ -1,0 +1,176 @@
+<div class="container text-center" style="margin-bottom: 5%">
+    <mat-card class="card2">
+        <div class="row">
+            <div class="d-flex justify-content-start">
+                <div>
+                    <img class="circle" src="{{ pic }}" (click)="dailog()"
+                        matTooltip="Click To Upload Profile Picture" />
+                </div>
+                <div class="row" style="margin-left: 10%; margin-top: 5%">
+                    <span *ngFor="let details of res">
+                        <h1 class="data" style="margin-right: 50%">
+                            {{ details.firstname }} {{ details.lastname }}
+                        </h1>
+                        <div class="col d-flex justify-content-start">
+                            <mat-icon style="color: #203a43">room</mat-icon>
+                            <h3 class="data" style="margin-right: 10%" matTooltip="Your Present Loction">{{city}}
+                            <!-- <span style="color: rgb(13, 13, 236);cursor: pointer;" (click)="mapView()">view on map</span> -->
+                        </h3>
+                            <mat-icon style="color: #203a43">email</mat-icon>
+                            <a href="" class="data">{{ details.companymailid }}</a>
+                            <mat-icon style="color: #203a43; margin-left: 10%">assignment_ind</mat-icon>
+                            <h3 class="data" (click)="idCard()" style="cursor: pointer">
+                                IDCard
+                            </h3>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <hr style="margin-top: 2%; border: 1px solid #203a43; opacity: 1" />
+            <div class="col d-flex justify-content-center">
+                <h3 class="data1">Organization Name: {{ compName }}</h3>
+                <h3 class="data1">Employee Code :{{ empcode }}</h3>
+                <h3 class="data1" *ngFor="let details of res">
+                    Department: {{ details.department }}
+                </h3>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card class="card1">
+        <mat-tab-group>
+            <mat-tab label="ABOUT">
+                <span *ngFor="let details of res">
+                    <div class="container text-start">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <h3 class="data2">
+                                    First Name :
+                                    <span style="color: #203a43">{{ details.firstname }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    Father Name :
+                                    <span style="color: #203a43"> {{ details.fathername }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    Email :
+                                    <span style="color: #203a43">{{ details.email }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    Address :
+                                    <span style="color: #203a43"> {{ details.address }} </span>
+                                </h3>
+                            </div>
+
+                            <div class="col">
+                                <h3 class="data2">
+                                    Last Name :
+                                    <span style="color: #203a43"> {{ details.lastname }} </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Date Of Birth :
+                                    <span style="color: #203a43"> {{ DOB }} </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Gender :
+                                    <span style="color: #203a43"> {{ details.gender }} </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Phone Number :
+                                    <span style="color: #203a43"> {{ details.phoneno }} </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </mat-tab>
+            <mat-tab label="JOB DETAILS">
+                <span *ngFor="let details of res">
+                    <div class="container text-start">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <h3 class="data2">
+                                    Employee Code :
+                                    <span style="color: #203a43">{{ empcode }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    Organization Name:
+                                    <span style="color: #203a43"> {{ compName }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    Department :
+                                    <span style="color: #203a43">{{ details.department }}</span>
+                                </h3>
+                            </div>
+
+                            <div class="col">
+                                <h3 class="data2">
+                                    Date Of Joining :
+                                    <span style="color: #203a43"> {{ DOJ }} </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Reporting To :
+                                    <span style="color: #203a43">
+                                        {{ details.reportingmanager }}
+                                    </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Company Email:
+                                    <span style="color: #203a43">
+                                        {{ details.companymailid }}
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </mat-tab>
+            <mat-tab label="MY FINANCE">
+                <span *ngFor="let details of res">
+                    <div class="container text-start">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <h2 style="color: #203a43" class="data2">
+                                    Employee Statutory Info
+                                </h2>
+                                <hr style="margin: 0%; color: #203a43" />
+                                <h3 class="data2">
+                                    AADHAR N0 :
+                                    <span style="color: #203a43">{{ details.aadharnumber }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    PAN No :
+                                    <span style="color: #203a43"> {{ details.pannumber }}</span>
+                                </h3>
+                                <h3 class="data2">
+                                    PF/UAN No :
+                                    <span style="color: #203a43">{{ details.uannumber }}</span>
+                                </h3>
+                            </div>
+
+                            <div class="col">
+                                <h2 style="color: #203a43" class="data2">Bank Details</h2>
+                                <hr style="margin: 0%; color: #203a43" />
+                                <h3 class="data2">
+                                    Bank Name :
+                                    <span style="color: #203a43"> {{ details.bankname }} </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Bank Account No :
+                                    <span style="color: #203a43">
+                                        {{ details.bankaccnumber }}
+                                    </span>
+                                </h3>
+                                <h3 class="data2">
+                                    Bank IFSC Code:
+                                    <span style="color: #203a43">
+                                        {{ details.bankifsccode }}
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>

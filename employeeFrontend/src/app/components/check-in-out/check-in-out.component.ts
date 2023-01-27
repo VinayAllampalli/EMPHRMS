@@ -32,11 +32,6 @@ export class CheckInOutComponent implements OnInit {
     let value = x
     this.backend.checkInOut(value,this.empcode).subscribe(data=>{
       console.log(data)
-   
     })
-  
-  
-  
   }
-
 }

@@ -1,0 +1,48 @@
+<div class="container text-center">
+    <div class="d-flex justify-content-center">
+        <mat-card class="card">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl.NO</th>
+                        <th scope="col">Task Id</th>
+                        <th scope="col">Assigned By</th>
+                        <th scope="col">Assigned Date</th>
+                        <th scope="col">Task Description</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let row of res; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ row.taskid }}</td>
+                        <td></td>
+                        <td>{{ assignDate }}</td>
+                        <td>{{ row.taskdescription }}</td>
+                        <td>{{ sDate }}</td>
+                        <td>{{ eDate }}</td>
+                        <td>
+                            <button pButton pRipple label="Completed" class="p-button-rounded"
+                                (click)="updateTaskStatus(i, row)"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container text-center">
+                <div class="d-flex justify-content-center" *ngIf="len == 0">
+                    <h1 class="row" style="
+              font-family: Brush Script MT, Lucida Handwriting, Cursive;
+              font-weight: 200;
+              color: #203a43;
+              margin-bottom: 3%;
+            ">
+                        No Tasks For You
+                    </h1>
+                    <!-- <img style="height:250px;width:350px;" src="../../../assets/images/Noresultfound.jpg"> -->
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

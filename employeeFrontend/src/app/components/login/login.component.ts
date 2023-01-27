@@ -59,8 +59,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email',user.email);
         localStorage.setItem('phoneno',user.phoneno);
         localStorage.setItem('dept',user.department);
-        localStorage.setItem('name',user.firstname)
-        localStorage.setItem('CompId',user.companyid)
+        localStorage.setItem('name',user.firstname);
+        localStorage.setItem('CompId',user.companyid);
+        localStorage.setItem('role',user.role)
         if (res.success == true) {
           this.snackbar.open(res.message, 'ok', {
                       duration: 3000,
@@ -69,9 +70,11 @@ export class LoginComponent implements OnInit {
                   }
                   this.router.navigate(['header']);    
       });
+    
     }
       this.ngxService.stop();
       
     }
+
 
 }

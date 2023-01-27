@@ -6,3 +6,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 .mat-typography h4,.mat-typography h3 {
     margin: 0;
 }  
+.mat-tab-label .mat-tab-label-content{
+    color:#203a43;
+    font-weight: bold;
+}

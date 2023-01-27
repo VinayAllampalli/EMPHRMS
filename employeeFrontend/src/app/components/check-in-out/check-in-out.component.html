@@ -1,7 +1,7 @@
-   <div class="container text-center">
-    <div class="d-flex justify-content-center">
-    <mat-card class="card" >
-    <table class="table">
+<div class="container text-center">
+  <div class="d-flex justify-content-center">
+    <mat-card class="card">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -16,12 +16,13 @@
             <th scope="row">1</th>
             <td>{{date}}</td>
             <td>{{empcode}}</td>
-            <td><button pButton pRipple type="button" (click)="checkInOut('CheckIn'); clicked=true" label="CheckIn"  class="p-button-rounded p-button-success" [disabled]="clicked" ></button></td>
-            <td><button pButton pRipple type="button" (click)="checkInOut('CheckOut'); clicked=true" label="CheckOut" value="checkOut" class="p-button-rounded p-button-danger" [disabled]="!clicked"></button></td>
+            <td><button pButton pRipple type="button" (click)="checkInOut('CheckIn'); clicked=true" label="CheckIn"
+                class="p-button-rounded p-button-success" [disabled]="clicked"></button></td>
+            <td><button pButton pRipple type="button" (click)="checkInOut('CheckOut'); clicked=true" label="CheckOut"
+                value="checkOut" class="p-button-rounded p-button-danger" [disabled]="!clicked"></button></td>
           </tr>
         </tbody>
       </table>
     </mat-card>
-    </div>
-    </div>
-    
+  </div>
+</div>

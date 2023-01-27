@@ -11,6 +11,7 @@ import { BackendService } from 'src/app/services/backend.service';
   styleUrls: ['./emp-creation.component.css']
 })
 export class EmpCreationComponent implements OnInit {
+date: any=Date;
 form:any;
 hide = true;
 hide1 = true;
@@ -23,8 +24,10 @@ role=['Admin','Manager','TL','Employee'];
     public router:Router) { }
 
   ngOnInit(): void {
-    this.currentDate = new Date();
-    this.formbuilder()
+    this.currentDate = Date();
+    this.formbuilder();
+    let vin=localStorage.getItem('CompId')
+    console.log(vin)
   }
  
   formbuilder() {
@@ -59,6 +62,7 @@ role=['Admin','Manager','TL','Employee'];
         Validators.maxLength(15),],],
       bankIfscCode:['', [Validators.required],],
       bankName:['', [Validators.required],],
+      CompanymailId:['', [Validators.required,Validators.pattern('^[A-Za-z0-9._%-]+@[a-z0-9._%-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}'),],],
     })
   }
@@ -92,12 +96,17 @@ role=['Admin','Manager','TL','Employee'];
       obj.bankAccNumber = temp.bankAccNumber;
       obj.bankIfscCode = temp.bankIfscCode;
       obj.bankName = temp.bankName;
+      obj.CompanymailId=temp.CompanymailId
       obj.password = temp.password;
-      obj.companyid=localStorage.getItem('CompId');
+      obj.CompanyId=localStorage.getItem('CompId');
       console.log(obj)
       this.backend.register(obj).subscribe((res:any)=> {
         console.log("----->",res.data);
+        this.router.navigate(['header/dashboard']);
       })
     }
+  }
+  company(){
+    this.router.navigate(['header/orgCreation']);
   }
 }

@@ -1,43 +1,45 @@
 <body style="background-image: url('./assets/images/Gray-plain-website-background.jpg');">
-<div class="container text-center">
-    <div class="d-flex justify-content-center">
+    <div class="container text-center">
+        <div class="d-flex justify-content-center">
 
-        <mat-card class="card">
-            <mat-card-label >LOGIN</mat-card-label>
-            <form [formGroup]="form" (ngSubmit)="submitform()">
-                <mat-card-content>
-                    <mat-form-field appearance="outline" style="width:70%;margin-top: 3%;">
-                        <mat-label style="color:white" for="EmpCode">EmpCode</mat-label>
-                        <mat-icon matPrefix> email</mat-icon>
-                        <input class="pointer" matInput type="text" formControlName="EmpCode">
-                        <mat-error *ngIf="EmpCode.touched && EmpCode.invalid">
-                        </mat-error>
+            <mat-card class="card">
+                <mat-card-label>LOGIN</mat-card-label>
+                <form [formGroup]="form" (ngSubmit)="submitform()">
+                    <mat-card-content>
+                        <mat-form-field appearance="outline" style="width:70%;margin-top: 3%;">
+                            <mat-label style="color:white" for="EmpCode">EmpCode</mat-label>
+                            <mat-icon matPrefix> email</mat-icon>
+                            <input class="pointer" matInput type="text" formControlName="EmpCode">
+                            <mat-error *ngIf="EmpCode.touched && EmpCode.invalid">
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline" style="width:70%;color:white">
                             <mat-label style="color:white" for="password">Password</mat-label>
                             <mat-icon matPrefix>lock</mat-icon>
                             <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
-                              formControlName="password">
-                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' : 'visibility'}}
+                                formControlName="password">
+                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
+                                'visibility'}}
                             </mat-icon>
                             <mat-error *ngIf="password.touched && password.invalid">
-                    
+
                             </mat-error>
-                          </mat-form-field>
+                        </mat-form-field>
                     </mat-card-content>
                     <div fxLayout="row" fxLayoutAlign="center center">
-                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="submitform()"></button>
-                        </div>
-                        <div fxLayout="column" fxLayoutAlign="center center">
-                            <h4 style='margin-top:3%'><a style="color: white" routerLink="/forgot">Forgot Password?</a></h4>
-                            </div>
-                          
-    
-            </form>
-    
-        
+                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                            (click)="submitform()"></button>
+                    </div>
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                        <h4 style='margin-top:3%'><a style="color: white" routerLink="/forgot">Forgot Password?</a></h4>
+                    </div>
+
+
+                </form>
+
+
             </mat-card>
-        
-      </div>
-</div>
+
+        </div>
+    </div>
 </body>

@@ -18,6 +18,14 @@ import { CheckInOutComponent } from './components/check-in-out/check-in-out.comp
 import { TaskCreationComponent } from './components/task-creation/task-creation.component';
 import { OrgCreationComponent } from './components/org-creation/org-creation.component';
 import { EmpCreationComponent } from './components/emp-creation/emp-creation.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MyTaskComponent } from './components/my-task/my-task.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
+import { MyFinanceComponent } from './components/my-finance/my-finance.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { IdCardComponent } from './components/id-card/id-card.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+
 
 const ngxUiLoaderConfig:NgxUiLoaderConfig =
 {
@@ -60,7 +68,14 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     CheckInOutComponent,
     TaskCreationComponent,
     OrgCreationComponent,
-    EmpCreationComponent
+    EmpCreationComponent,
+    ProfileComponent,
+    MyTaskComponent,
+    LeavesComponent,
+    MyFinanceComponent,
+    FileUploadComponent,
+    IdCardComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -73,7 +88,9 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PickerModule
+    
   
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
