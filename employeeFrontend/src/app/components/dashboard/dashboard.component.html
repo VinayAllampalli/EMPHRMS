@@ -70,8 +70,8 @@
                                 <h1 class="text">No Work Anniversaries Today</h1>
                             </span>
                             <span *ngIf="work!=0">
-                                <img style="height:250px;width:350px;" src="../../../assets/images/happy-birthday.jpg">
-                                <h1 *ngFor="let x of work" class="text"> HAPPY BIRTHDAY {{x.firstname}} {{x.lastname}}
+                                <img style="height:250px;width:350px;" src="../../../assets/images/tree.jpg">
+                                <h1 *ngFor="let x of work" class="text"> HAPPY WORK ANNIVERSARIE  {{x.firstname}} {{x.lastname}}
                                 </h1>
                             </span>
                         </div>
@@ -86,7 +86,7 @@
                 <p-tabPanel header="Post">
                     <span *ngFor="let item of Feed ">
                         <h4 class="data">{{item.postby}}</h4>
-                        <h6 class="data">{{postdate}} {{item.posttime}}</h6>
+                        <h6 class="data">{{item.postdate}} {{item.posttime}}</h6>
                         <h3 class="data">{{item.post}}</h3>
                         <hr>
                     </span>
@@ -116,3 +116,6 @@
 
     </div>
 </div>
+
+
+

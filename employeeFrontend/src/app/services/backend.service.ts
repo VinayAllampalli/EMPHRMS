@@ -10,8 +10,8 @@ export class BackendService {
   login(obj: any) {
     return this.http.post(`${environment.base_url}/login`, obj);
   }
-  checkInOut(value: any, empcode: any) {
-    return this.http.post(`${environment.base_url}/logData/${value}/${empcode}`, {});
+  checkInOut(value: any, empcode: any,obj:any) {
+    return this.http.post(`${environment.base_url}/logData/${value}/${empcode}`,obj);
   }
   DOB(CompId: any) {
     return this.http.get(`${environment.base_url}/DOB/${CompId}`);
@@ -33,9 +33,10 @@ export class BackendService {
   }
   gettask(empCode: any) {
     return this.http.get(`${environment.base_url}/gettask/${empCode}`);
+    
   }
   updateStatus(taskId: any) {
-    return this.http.put(`${environment.base_url}/updatetask/${taskId}`, null)
+    return this.http.put(`${environment.base_url}/updatetask/${taskId}`, null);
   }
   getemployees(empCode: any) {
     return this.http.get(`${environment.base_url}/getemp/${empCode}`);
@@ -51,7 +52,7 @@ export class BackendService {
     return this.http.get(`${environment.base_url}/getCompany/${CompId}`);
   }
   feed(empCode:any,obj:any){
-    return this.http.post(`${environment.base_url}/postFeed/${empCode}`, obj)
+    return this.http.post(`${environment.base_url}/postFeed/${empCode}`, obj);
   }
   getfeed(CompId: any){
     return this.http.get(`${environment.base_url}/getFeed/${CompId}`);
@@ -59,5 +60,24 @@ export class BackendService {
   // all info about system info, present location ...etc 
   getLocation(){
     return this.http.get('https://ipapi.co/json/');
+  }
+
+  AlreadyChekIn(empCode:any){
+    return this.http.get(`${environment.base_url}/checkIn/${empCode}`);
+  }
+  getattedance(empCode:any,date:any){
+  
+    return this.http.get(`${environment.base_url}/getattendance/${empCode}/${date}`);
+  }
+  
+  Earnings(CompId: any,obj:any){
+    return this.http.post(`${environment.base_url}/earnings/${CompId}`, obj);
+   
+  }
+  getEarn(empCode:any){
+    return this.http.get(`${environment.base_url}/getEarn/${empCode}`);
+  }
+  employeePay(obj:any){
+    return this.http.post(`${environment.base_url}/employeePay`, obj);
   }
 }

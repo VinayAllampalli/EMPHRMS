@@ -46,6 +46,16 @@ h3{
 
 }
 
+.card3{
+    width: 30rem;
+    margin-bottom: 2em;
+    border:2px solid;
+    border-color:#203a43;
+    margin-left: 10em;
+    margin-top: 0.2em;
+    height: 225px;  
+}
+
 
 
 

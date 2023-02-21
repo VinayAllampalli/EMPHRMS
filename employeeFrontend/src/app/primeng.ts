@@ -7,7 +7,8 @@ import {TabViewModule} from 'primeng/tabview';
 import {CalendarModule} from 'primeng/calendar';
 import {DropdownModule} from 'primeng/dropdown';
 import {CheckboxModule} from 'primeng/checkbox';
-
+import {PanelModule} from 'primeng/panel';
+import {InputSwitchModule} from 'primeng/inputswitch';
 @NgModule({
     exports:[
         ButtonModule,
@@ -18,6 +19,9 @@ import {CheckboxModule} from 'primeng/checkbox';
         CalendarModule,
         DropdownModule,
         CheckboxModule,
+        PanelModule,
+        InputSwitchModule
+
        
     ]
 })

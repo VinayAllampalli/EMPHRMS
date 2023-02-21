@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "@ctrl/ngx-emoji-mart": "^6.2.0",
+    "@fullcalendar/angular": "^6.1.0",
+    "@fullcalendar/daygrid": "^6.1.0",
     "@googlemaps/js-api-loader": "^1.15.1",
     "bootstrap": "^5.2.3",
     "moment": "^2.29.4",

@@ -1,0 +1,12 @@
+.font{
+    color:#203a43;
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+}
+.card{
+    width: 90%;
+    margin-top: 5%;
+    color:#203a43;
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    border:2px solid;
+    border-color:#203a43;
+}

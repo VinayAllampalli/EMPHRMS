@@ -5,3 +5,15 @@
     background-image: url('../../../assets/images/Gray-plain-website-background.jpg');
     color: white;
   }
+  .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+  }
+  /* .mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  } */

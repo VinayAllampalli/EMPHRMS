@@ -126,6 +126,7 @@ post(){
   this.backend.feed(localStorage.getItem('empcode'),obj).subscribe((data:any)=>{
     console.log(data);
     this.emojiForm.reset()
+    this.getFeed()
   })
  
 }
@@ -134,6 +135,13 @@ getFeed(){
   this.Feed = data.result
   
   console.log(this.Feed)
+
+  this.Feed = this.Feed.map((vin:any)=>{
+    vin.postdate= moment(vin.postdate).format('DD/MM/YYYY');
+    return vin ;
+   
+
+   })
   for (let i = 0; i < this.Feed.length; i++){
     this.postdate = moment(this.Feed[i].postdate).format('DD/MMM/YYYY');
 

@@ -14,6 +14,9 @@ import { MyTaskComponent } from './components/my-task/my-task.component';
 import { LeavesComponent } from './components/leaves/leaves.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { IdCardComponent } from './components/id-card/id-card.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+import { PayslipsComponent } from './components/payslips/payslips.component';
+import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
 
 
 const routes: Routes = [
@@ -89,7 +92,23 @@ const routes: Routes = [
         component: IdCardComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path:'attendance',
+        component:AttendanceComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path:'payslips',
+        component:PayslipsComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path:'payslipGeneration',
+        component:PayslipGenerstionComponent,
+        canActivate:[AuthGuard]
+      }
       
+
     ]
   }
 ];

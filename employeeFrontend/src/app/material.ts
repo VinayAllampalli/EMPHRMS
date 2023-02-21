@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatPaginatorModule,
     MatTooltipModule,
     MatExpansionModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSlideToggleModule
   ]
 
 })

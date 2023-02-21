@@ -25,6 +25,12 @@ import { MyFinanceComponent } from './components/my-finance/my-finance.component
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { IdCardComponent } from './components/id-card/id-card.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { PayslipsComponent } from './components/payslips/payslips.component';
+import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
+
+
 
 
 const ngxUiLoaderConfig:NgxUiLoaderConfig =
@@ -75,6 +81,11 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     MyFinanceComponent,
     FileUploadComponent,
     IdCardComponent,
+    AttendanceComponent,
+    PayslipsComponent,
+    PayslipGenerstionComponent,
+
+    
    
   ],
   imports: [
@@ -89,7 +100,8 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    PickerModule
+    PickerModule,
+    FullCalendarModule
     
   
   ],

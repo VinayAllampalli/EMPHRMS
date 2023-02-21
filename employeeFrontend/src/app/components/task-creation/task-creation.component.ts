@@ -78,6 +78,7 @@ export class TaskCreationComponent implements OnInit {
     console.log("----->",obj)
     this.backend.taskCreation(this.companyId,this.empcode,obj).subscribe(data=>{
       console.log(data)
+      window.location.reload();
     })
   }
 }

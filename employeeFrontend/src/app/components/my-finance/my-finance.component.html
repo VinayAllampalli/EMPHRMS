@@ -1,17 +1,97 @@
-<form [formGroup]="emojiForm">
-    <mat-form-field appearance="outline" style="width:70%;">
-        
-        <textarea matInput type="text" formControlName="inputField" [(ngModel)]="postdata">
-               </textarea>
-               <button pButton pRipple type="button" icon="pi pi-prime" (click)="onclick()" class="p-button-rounded p-button-secondary" ></button>
-            <ng-container *ngIf="visible">
-                <div>
-                    <emoji-mart (emojiClick)="addEmoji($event)"></emoji-mart>
+<div class="d-flex justify-content-center">
+    <mat-card class="card">
+        <mat-card-label class="text">Salary Details Form</mat-card-label>
+        <form [formGroup]="form2" (ngSubmit)="submitform()">
+            <div class="d-flex justify-content-start">
+                <mat-form-field appearance="outline" style="width:30%;">
+                    <mat-label>Employee Code</mat-label>
+                    <input class="pointer" matInput type="text" formControlName="EmpCode"
+                        placeholder="Enter Employee Code ">
+                </mat-form-field> &nbsp; &nbsp; &nbsp;
+                <mat-form-field appearance="outline" style="width:30%;">
+                    <mat-label>Total CTC / Month</mat-label>
+                    <input class="pointer" matInput type="number" formControlName="totalCtcPerMonth">
+                </mat-form-field>
+            </div>
+        </form>
+        <form [formGroup]="form" (ngSubmit)="submitform()">
+            <div class="d-flex justify-content-start">
+                <div class="row g-3">
+                    <div class="container text-start">
+                        <h3 style="margin-top: 3%;color:#203a43;">Total Earnings </h3>
+                        <hr style="margin:0%;color:#203a43;">
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Basic</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="basic">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Convency Allowance</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="convencyAllowance">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>HRA</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="HRA">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Special Allowance</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="splAllowance">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Medical Allowance</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="medicalAllowance">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Dearness Allowance</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="dearnessAllowance">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Education Allowance</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="educationAllowance">
+                        </mat-form-field>
+                    </div>
                 </div>
-               
+            </div>
+        </form>
+        <form [formGroup]="form1" (ngSubmit)="submitform()">
+            <div class="row g-3">
+                <div class="container text-start">
+                    <h3 style="margin-top: 3%;color:#203a43;">Deductions</h3>
+                    <hr style="margin:0%;color:#203a43;">
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" style="width:70%;">
+                        <mat-label>PF Employee</mat-label>
+                        <input class="pointer" matInput type="number" formControlName="pfEmployee">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width:70%;">
+                        <mat-label>PF Employer</mat-label>
+                        <input class="pointer" matInput type="number" formControlName="pfEmployer">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width:70%;">
+                        <mat-label>Insurance</mat-label>
+                        <input class="pointer" matInput type="number" formControlName="insurance">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" style="width:70%;">
+                        <mat-label>Gratuity</mat-label>
+                        <input class="pointer" matInput type="number" formControlName="gratuity">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" style="width:70%;">
+                        <mat-label>ESI</mat-label>
+                        <input class="pointer" matInput type="number" formControlName="esi">
+                    </mat-form-field>
 
-            </ng-container>
-    </mat-form-field> 
-    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="post()" class="p-button-rounded p-button-secondary" ></button>
-   
- </form>
+                </div>
+            </div>
+        </form>
+        <div class="container text-center">
+            <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="submitform()" style=" border:2px solid;
+                    border-color:#fdfdfd;"></button>
+        </div>
+    </mat-card>
+</div>

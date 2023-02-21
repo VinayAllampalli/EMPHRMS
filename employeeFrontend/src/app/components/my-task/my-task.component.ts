@@ -40,13 +40,25 @@ export class MyTaskComponent implements OnInit {
       console.log(data);
       this.res = data.result
       this.len=this.res.length
-      for (let i = 0; i < this.res.length; i++){
-        this.assignDate = moment(this.res[i].assigneddate).format('DD/MMM/YYYY');
-        this.sDate = moment(this.res[i].startdate).format('DD/MMM/YYYY');
-        this.eDate=moment(this.res[i].enddate).format('DD/MMM/YYYY');
+      console.log(this.len)
+      
+
+      this.res = this.res.map((vin:any)=>{
+        vin.assigneddate= moment(vin.assigneddate).format('DD/MM/YYYY');
+        vin.startdate= moment(vin.startdate).format('DD/MM/YYYY');
+        vin.enddate= moment(vin.enddate).format('DD/MM/YYYY');
+        return vin ;
+
+       
+
+       })
+      // for (let i = 0; i < this.res.length; i++){
+      //   this.assignDate = moment(this.res[i].assigneddate).format('DD/MMM/YYYY');
+      //   this.sDate = moment(this.res[i].startdate).format('DD/MMM/YYYY');
+      //   this.eDate=moment(this.res[i].enddate).format('DD/MMM/YYYY');
         
         
-      }
+      // }
       
     })
   }
@@ -55,7 +67,8 @@ export class MyTaskComponent implements OnInit {
     let taskId=this.selectedRow.taskid
    this.backend.updateStatus(taskId).subscribe(data=>{
    })
-   window.location.reload()
+  //  window.location.reload()
+  this.gettask()
     
   }
  

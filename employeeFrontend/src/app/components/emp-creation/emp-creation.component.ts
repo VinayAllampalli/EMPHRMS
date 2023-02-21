@@ -15,6 +15,10 @@ date: any=Date;
 form:any;
 hide = true;
 hide1 = true;
+pfStatus:any
+insuranceStatus:any;
+gratutityStatus:any;
+Checked: boolean = true;
 currentDate: any;
 gender = ["Male","Female"];
 role=['Admin','Manager','TL','Employee'];
@@ -27,7 +31,7 @@ role=['Admin','Manager','TL','Employee'];
     this.currentDate = Date();
     this.formbuilder();
     let vin=localStorage.getItem('CompId')
-    console.log(vin)
+    console.log(vin);
   }
  
   formbuilder() {
@@ -62,13 +66,33 @@ role=['Admin','Manager','TL','Employee'];
         Validators.maxLength(15),],],
       bankIfscCode:['', [Validators.required],],
       bankName:['', [Validators.required],],
+      CTC:['', [Validators.required],],
       CompanymailId:['', [Validators.required,Validators.pattern('^[A-Za-z0-9._%-]+@[a-z0-9._%-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>"\'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}'),],],
     })
   }
+
+  EmployeePF(event:any) {
+    console.log(event.checked) // now it will give true or false 
+    const value = event.checked ? 'enable' : 'disable';
+    this.pfStatus = value
+    console.log(this.pfStatus)
+  }
+  Gratuity(event:any) {
+    console.log(event.checked) // now it will give true or false 
+    const value = event.checked ? 'enable' : 'disable';
+    this.gratutityStatus= value
+    console.log(this.gratutityStatus)
+  }
+  Insurance(event:any) {
+    console.log(event.checked) // now it will give true or false 
+    const value = event.checked ? 'enable' : 'disable';
+    this.insuranceStatus=value
+    console.log(this.insuranceStatus)
+  }
   submitform(){
     if (!this.form.valid) {
-      this.snackbar.open('Please enter valid credentials', 'ok', {
+      this.snackbar.open('Please enter valid details', 'ok', {
         duration: 3000,
         panelClass: ['blue-snackbar'],
       });
@@ -76,6 +100,7 @@ role=['Admin','Manager','TL','Employee'];
     else{
       let temp = this.form.value
       let obj: any = {};
+      let obj1:any={}
       obj.firstName = temp.firstName;
       obj.lastName = temp.lastName;
       obj.email = temp.email;
@@ -98,15 +123,28 @@ role=['Admin','Manager','TL','Employee'];
       obj.bankName = temp.bankName;
       obj.CompanymailId=temp.CompanymailId
       obj.password = temp.password;
+      obj1.EmpCode = temp.EmpCode;
+      obj1.CTC = temp.CTC;
+      obj1.pfStatus=this.pfStatus;
+      obj1.gratutityStatus=this.gratutityStatus;
+      obj1.insuranceStatus=this.insuranceStatus;
       obj.CompanyId=localStorage.getItem('CompId');
       console.log(obj)
+     
       this.backend.register(obj).subscribe((res:any)=> {
         console.log("----->",res.data);
         this.router.navigate(['header/dashboard']);
+      })
+
+      this.backend.employeePay(obj1).subscribe((res:any)=>{
+        console.log(">>>>>>>>>>",res)
       })
     }
   }
   company(){
     this.router.navigate(['header/orgCreation']);
   }
+ 
+
+ 
 }

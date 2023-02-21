@@ -11,7 +11,8 @@
             <form [formGroup]="form" (ngSubmit)="submitform()">
                 <div class="row g-3">
                     <div class="container text-start">
-                        <h3 style="margin-top: 3%;color:#203a43;">Personal Info</h3>
+                        <h3 style="margin-top: 3%;color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                        font-weight: 1000;">Personal Info</h3>
                         <hr style="margin:0%;color:#203a43;">
                     </div>
                     <div class="col">
@@ -58,7 +59,8 @@
                         </mat-form-field>
                     </div>
                     <div class="container text-start">
-                        <h3 style="color:#203a43;">Employee Statutory Info & Payment Info</h3>
+                        <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                        font-weight: 1000;">Employee Statutory Info & Payment Info</h3>
                         <hr style="margin:0%;color:#203a43;">
                     </div>
                     <div class="col">
@@ -90,7 +92,8 @@
                         </mat-form-field>
                     </div>
                     <div class="container text-start">
-                        <h3 style="color:#203a43;">Employee Details</h3>
+                        <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                        font-weight: 1000;">Employee Details</h3>
                         <hr style="margin:0%;color:#203a43;">
                     </div>
                     <div class="col">
@@ -116,6 +119,14 @@
                             <mat-label>Department</mat-label>
                             <input class="pointer" matInput type="text" formControlName="department">
                         </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Create Password</mat-label>
+                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
+                                formControlName="password">
+                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
+                                'visibility'}}
+                            </mat-icon>
+                        </mat-form-field>
                     </div>
                     <div class="col">
                         <mat-form-field appearance="outline" style="width:70%;">
@@ -127,25 +138,48 @@
                             <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
                         </mat-form-field>
                         <mat-form-field appearance="outline" style="width:70%;">
+                            <mat-label>Total CTC /  Month</mat-label>
+                            <input class="pointer" matInput type="number" formControlName="CTC">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" style="width:70%;">
                             <mat-label>Company Mail Id</mat-label>
                             <input class="pointer" matInput type="email" formControlName="CompanymailId">
                         </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Create Password</mat-label>
-                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
-                                formControlName="password">
-                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
-                                'visibility'}}
-                            </mat-icon>
-                        </mat-form-field>
+                       
                     </div>
-                    <div class="container text-center">
-                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
-                            (click)="submitform()" style=" border:2px solid;
-                        border-color:#fdfdfd;"></button>
-                    </div>
+                    <!-- <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch> -->
+                   
                 </div>
             </form>
+            <div class="container text-start">
+                <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                font-weight: 1000;">Employee Benfits</h3>
+                <hr style="margin:0%;color:#203a43;">
+                </div>
+                <div class="d-flex justify-content-center" style="margin-top:20px;margin-bottom:20px;">
+                    <div class="col">
+                <h3>Employee PF</h3>
+            <mat-slide-toggle (change)="EmployeePF($event)"></mat-slide-toggle> &nbsp;&nbsp;&nbsp;
+            </div>
+        
+            <div class="col">
+            <h3>Gratuity</h3>
+            <mat-slide-toggle (change)="Gratuity($event)"></mat-slide-toggle>  &nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="col">
+            <h3>Insurance</h3>
+            <mat-slide-toggle (change)="Insurance($event)"></mat-slide-toggle>  &nbsp;&nbsp;&nbsp;
+            </div>
+            </div>
+ 
+           
+            <div class="container text-center">
+                <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                    (click)="submitform()" style=" border:2px solid;
+                border-color:#fdfdfd;"></button>
+            </div>
         </mat-card>
     </div>
 </div>
+

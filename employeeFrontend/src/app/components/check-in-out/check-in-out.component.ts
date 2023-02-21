@@ -12,6 +12,10 @@ export class CheckInOutComponent implements OnInit {
   dept:any;
   date:any;
   clicked:Boolean=false;
+  longitude:any;
+  latitude:any;
+  IpAddress:any;
+  location: any;
 
   constructor(public backend:BackendService) { }
 
@@ -19,6 +23,8 @@ export class CheckInOutComponent implements OnInit {
     this.name=localStorage.getItem('name');
     this.empcode=localStorage.getItem('empcode');
     this.dept=localStorage.getItem('dept');
+    this.AlreadyChekIn();
+    this.systemApi();
 
     const dateObject = new Date();
         const date = dateObject.getDate();
@@ -29,9 +35,36 @@ export class CheckInOutComponent implements OnInit {
 
   checkInOut(x:any){
     console.log(x);
-    let value = x
-    this.backend.checkInOut(value,this.empcode).subscribe(data=>{
+    let value = x;
+    let obj: any = {};
+      obj.longitude = this.longitude;
+      obj.latitude =this.latitude;
+      obj.IpAddress=this.IpAddress;
+      obj.location = this.location
+      console.log(obj)
+    this.backend.checkInOut(value,this.empcode,obj).subscribe(data=>{
       console.log(data)
+      window.location.reload();
+      
     })
   }
+  AlreadyChekIn(){
+  this.backend.AlreadyChekIn(this.empcode).subscribe((data:any)=>{
+    let value = data.success
+    console.log(value)
+    if(value==true){
+      this.clicked=true
+    }
+
+  })
+}
+systemApi(){
+  this.backend.getLocation().subscribe((response:any)=>{
+    console.log(response);
+    this.longitude = response.longitude
+    this.latitude = response.latitude
+    this.IpAddress = response.ip
+    this.location = response.city
+  })
+}
 }
