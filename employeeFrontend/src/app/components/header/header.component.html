@@ -18,7 +18,7 @@
         *ngIf="role == 'TL' || role == 'Manager' || role == 'Admin'" [routerLinkActive]="['is-active']">
         Create Task
       </button>
-      <button mat-menu-item class="menu" [routerLink]="['task']"
+      <button  mat-menu-item class="menu" [routerLink]="['task']"
         *ngIf="role == 'TL' || role == 'Employee' || role == 'Admin'">
         My Task
       </button>
@@ -32,7 +32,9 @@
       <button mat-menu-item class="menu" [routerLink]="['attendance']">
         Attendance
       </button>
-      <button mat-menu-item class="menu">Apply For Leaves</button>
+      <button mat-menu-item class="menu" [routerLink]="['leaves']">Apply For Leaves</button>
+      <button mat-menu-item class="menu" [routerLink]="['leavesApproval']"   *ngIf="role == 'TL' || role == 'Manager' || role == 'Admin'" [routerLinkActive]="['is-active']" >
+        Approval For Leaves</button>
       <button mat-menu-item class="menu" [routerLink]="['checkInOut']">
         CheckIn/Out
       </button>

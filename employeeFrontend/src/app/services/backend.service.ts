@@ -80,4 +80,20 @@ export class BackendService {
   employeePay(obj:any){
     return this.http.post(`${environment.base_url}/employeePay`, obj);
   }
+  allLeaves(empCode:any){
+    return this.http.get(`${environment.base_url}/getLeaves/${empCode}`);
+  }
+  applyLeave(empCode:any,obj:any){
+    return this.http.post(`${environment.base_url}/appliedleaves/${empCode}`, obj);
+
+  }
+  getappliedLeavesFromEmployees(empCode:any,){
+    return this.http.get(`${environment.base_url}/sendleavesForApproval/${empCode}`);
+  }
+  UpdateLeaveStatus(leaveid:any,obj:any){
+    return this.http.put(`${environment.base_url}/UpdateLeaveStatus/${leaveid}`,obj);
+  }
+  getallmyleaves(empCode:any){
+    return this.http.get(`${environment.base_url}/getmyleaves/${empCode}`);
+  }
 }

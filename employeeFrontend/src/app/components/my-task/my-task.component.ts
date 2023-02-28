@@ -69,7 +69,6 @@ export class MyTaskComponent implements OnInit {
    })
   //  window.location.reload()
   this.gettask()
-    
   }
  
   

@@ -20,6 +20,7 @@ insuranceStatus:any;
 gratutityStatus:any;
 Checked: boolean = true;
 currentDate: any;
+probitionValue:any;
 gender = ["Male","Female"];
 role=['Admin','Manager','TL','Employee'];
   constructor(private fb:FormBuilder,
@@ -90,6 +91,13 @@ role=['Admin','Manager','TL','Employee'];
     this.insuranceStatus=value
     console.log(this.insuranceStatus)
   }
+  Probition(event:any){
+    console.log(event.checked) // now it will give true or false 
+    const value = event.checked ? 'enable' : 'disable';
+    this.probitionValue=value
+    console.log(this.probitionValue)
+  }
+ 
   submitform(){
     if (!this.form.valid) {
       this.snackbar.open('Please enter valid details', 'ok', {
@@ -123,6 +131,7 @@ role=['Admin','Manager','TL','Employee'];
       obj.bankName = temp.bankName;
       obj.CompanymailId=temp.CompanymailId
       obj.password = temp.password;
+      obj.probitionValue = this.probitionValue
       obj1.EmpCode = temp.EmpCode;
       obj1.CTC = temp.CTC;
       obj1.pfStatus=this.pfStatus;
@@ -135,7 +144,6 @@ role=['Admin','Manager','TL','Employee'];
         console.log("----->",res.data);
         this.router.navigate(['header/dashboard']);
       })
-
       this.backend.employeePay(obj1).subscribe((res:any)=>{
         console.log(">>>>>>>>>>",res)
       })
@@ -143,8 +151,5 @@ role=['Admin','Manager','TL','Employee'];
   }
   company(){
     this.router.navigate(['header/orgCreation']);
-  }
- 
-
- 
+  } 
 }

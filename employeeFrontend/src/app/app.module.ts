@@ -29,6 +29,9 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PayslipsComponent } from './components/payslips/payslips.component';
 import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
+
 
 
 
@@ -84,6 +87,8 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     AttendanceComponent,
     PayslipsComponent,
     PayslipGenerstionComponent,
+    LeaveApprovalComponent,
+
 
     
    
@@ -101,7 +106,12 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     ReactiveFormsModule,
     FormsModule,
     PickerModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+  
+  
     
   
   ],

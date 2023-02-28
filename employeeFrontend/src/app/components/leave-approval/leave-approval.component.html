@@ -1,0 +1,52 @@
+<div class="container text-center">
+    <div class="d-flex justify-content-center">
+        <mat-card class="card">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl.NO</th>
+                        <th scope="col">Leave Id</th>
+                        <th scope="col">Employee Code</th>
+                        <th scope="col">From Date</th>
+                        <th scope="col">To Date</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Leave Type</th>
+                        <th scope="col">No.of Days</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let row of res; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ row.leaveid }}</td>
+                        <td>{{row.empcode}}</td>
+                        <td>{{ row.fromdate }}</td>
+                        <td>{{ row.todate }}</td>
+                        <td>{{ row.note }}</td>
+                        <td>{{ row.typeofleave }}</td>
+                        <td>{{ row.totaldays }}</td>
+                        <td>
+                            <button pButton pRipple label="Approve" class="p-button-rounded p-button-success"
+                                (click)="updateleaveStatus(i, row,'Approve')"></button> &nbsp; &nbsp;
+                            <button pButton pRipple label="Reject" class="p-button-rounded p-button-danger"
+                                (click)="updateleaveStatus(i, row,'Reject')"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="container text-center">
+                <div class="d-flex justify-content-center" *ngIf="len == 0">
+                    <h1 class="row" style="
+              font-family: Brush Script MT, Lucida Handwriting, Cursive;
+              font-weight: 200;
+              color: #203a43;
+              margin-bottom: 3%;
+            ">
+                        No Leaves for Approval
+                    </h1>
+                    <!-- <img style="height:250px;width:350px;" src="../../../assets/images/Noresultfound.jpg"> -->
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

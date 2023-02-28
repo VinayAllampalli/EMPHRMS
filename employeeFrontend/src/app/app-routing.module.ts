@@ -17,6 +17,7 @@ import { IdCardComponent } from './components/id-card/id-card.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
 import { PayslipsComponent } from './components/payslips/payslips.component';
 import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
+import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
 
 
 const routes: Routes = [
@@ -106,9 +107,12 @@ const routes: Routes = [
         path:'payslipGeneration',
         component:PayslipGenerstionComponent,
         canActivate:[AuthGuard]
+      },
+      {
+        path:'leavesApproval',
+        component:LeaveApprovalComponent,
+        canActivate:[AuthGuard]
       }
-      
-
     ]
   }
 ];

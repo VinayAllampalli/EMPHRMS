@@ -37,6 +37,8 @@
                 <td>{{row.log_date}}</td>
                 <td>{{row.totalhours}}</td>
                 <td>{{row.location}}</td>
+                
+
                 <td>	<mat-icon style="color:green;cursor:pointer;" (mouseover)="show(i)" (mouseout)="hide(i)" >check_circle</mat-icon>
                   <mat-card *ngIf="showit && i === currentIdx" style=" color:#203a43;
                   font-family: Brush Script MT, Lucida Handwriting, Cursive;
@@ -52,7 +54,6 @@
                   <p class="d-flex justify-content-start" ><mat-icon style="color:red">call_received</mat-icon>Out Time: {{row.checkout_time}}</p> &nbsp; &nbsp; &nbsp; 
                   <p class="d-flex justify-content-start">Latitude {{row.latitude}} </p>
                </div>
-                 
                 </mat-card>
 
                   </td>
@@ -79,6 +80,10 @@
   </div>
  
   </div>
+
+
+ 
+        
 
   
 
