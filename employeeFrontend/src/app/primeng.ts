@@ -9,6 +9,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {CheckboxModule} from 'primeng/checkbox';
 import {PanelModule} from 'primeng/panel';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {TableModule} from 'primeng/table';
 @NgModule({
     exports:[
         ButtonModule,
@@ -20,7 +21,8 @@ import {InputSwitchModule} from 'primeng/inputswitch';
         DropdownModule,
         CheckboxModule,
         PanelModule,
-        InputSwitchModule
+        InputSwitchModule,
+        TableModule
 
        
     ]

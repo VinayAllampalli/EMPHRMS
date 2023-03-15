@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as echarts from 'echarts';
 import { BackendService } from 'src/app/services/backend.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import * as moment from 'moment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+
+
 
 type EChartsOption = echarts.EChartsOption;
 
@@ -27,11 +29,21 @@ export class LeavesComponent implements OnInit {
   days: any;
   res:any;
   len: any;
+  
+ 
+ 
 
-
-  constructor(private backend: BackendService, private fb: FormBuilder, private datePipe: DatePipe, private snackbar: MatSnackBar,) { }
+  constructor(private backend: BackendService, 
+    private fb: FormBuilder,
+     private datePipe: DatePipe,
+      private snackbar: MatSnackBar,
+      
+      ) {
+       
+  }
 
   ngOnInit(): void {
+   
     this.currentDate = Date();
     this.formbuilder()
     this.empcode = localStorage.getItem('empcode');
@@ -46,8 +58,10 @@ export class LeavesComponent implements OnInit {
       for (let i = 0; i < res.length; i++) {
         this.CL = res[i].casualleaves;
         this.SL = res[i].sickleave;
+        console.log(this.CL)
+        console.log(this.SL)
       }
-
+ 
       // update chart data
       this.chartData = [
         { value: this.CL, name: 'Casual Leave' },
@@ -88,8 +102,10 @@ export class LeavesComponent implements OnInit {
         ]
       };
       option && myChart.setOption(option);
+     
     });
   }
+ 
   formbuilder() {
     this.form = this.fb.group({
       startDate: ['', [Validators.required]],

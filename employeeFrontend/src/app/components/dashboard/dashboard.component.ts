@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { interval } from 'rxjs';
 import { BackendService } from 'src/app/services/backend.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Router,ActivatedRoute} from '@angular/router';
+import { LeavesComponent } from '../leaves/leaves.component';
+import * as echarts from 'echarts';
+import { EChartsOption } from 'echarts/types/dist/echarts';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,13 +36,23 @@ export class DashboardComponent implements OnInit {
   visible:boolean = false;
   Feed:any;
   postdate: any;
-
-  constructor(public datepipe:DatePipe,public backend:BackendService,private fb:FormBuilder,private router:Router) { }
+  casualLeaveCount:any;
+  sickLeaveCount:any;
+  CL: any;
+  SL: any;
+  empcode: any;
+  chartData: any;
+  constructor(public datepipe:DatePipe,
+    public backend:BackendService,
+    private fb:FormBuilder,
+    private router:Router, 
+   ) { }
 
   ngOnInit(): void {
   
     this.compId= localStorage.getItem('CompId')
-    console.log(this.compId)
+    console.log(this.compId);
+   
     this.dob();
     this.doj();
     this.getcompany();
@@ -47,8 +60,12 @@ export class DashboardComponent implements OnInit {
     console.log(Date.now())
     this.currentDateTime =this.datepipe.transform((new Date), 'HH:mm');
     this.formbuilder();
-    this.getFeed();
+    this.getFeed();  
+    this.empcode = localStorage.getItem('empcode'); 
+    this.getallLeaves();
+   
   
+
     console.log(this.currentDateTime);
   
     if(this.currentDateTime > '00:00' && this.currentDateTime < '12:00'){
@@ -150,4 +167,68 @@ getFeed(){
 
   })
 }
+getallLeaves() {
+  this.backend.allLeaves(this.empcode).subscribe((leavedata: any) => {
+    let res = leavedata.result
+    console.log(res)
+    for (let i = 0; i < res.length; i++) {
+      this.CL = res[i].casualleaves;
+      this.SL = res[i].sickleave;
+      console.log(this.CL)
+      console.log(this.SL)
+      this.chartData = [
+        { value: this.CL, name: 'Casual Leave' },
+        { value: this.SL, name: 'Sick Leave' },
+      ];
+      // create chart
+      var chartDom = document.getElementById('main')!;
+      var myChart = echarts.init(chartDom);
+      var option: EChartsOption = {
+       
+          title: {
+            text: 'Leave Balance',
+            subtext: 'For the year 2023'
+          },
+          tooltip: {
+            trigger: 'axis'
+          },
+        
+        
+          calculable: true,
+          xAxis: [
+            {
+              type: 'category',
+              data: ['SickLeave', 'casualLeave']
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value'
+            }
+          ],
+          series: [
+            {
+              type: 'bar',
+              data: this.chartData,
+              itemStyle: {
+                color: function(params) {
+                  var colors = ['#FFA500', '#203a43']; 
+                  return colors[params.dataIndex];
+                }
+            }
+          }
+          ]
+        };
+        
+      option && myChart.setOption(option);
+    }
+     
+    })
+    }
+    leave(){
+      this.router.navigate(['header/leaves']);
+    }
+ 
 }
+
+

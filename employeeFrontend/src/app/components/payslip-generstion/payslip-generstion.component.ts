@@ -31,7 +31,7 @@ netpay:any;
       });
       console.log(this.new)
        this.earns = this.new[0].reduce((a: any, b: any) => +(a) + +(b), 0);
-  console.log(this.earns); 
+      console.log(this.earns); 
   
   this.new1= this.res.map((obj:any) => {
     return Object.values(obj).slice(9,13)

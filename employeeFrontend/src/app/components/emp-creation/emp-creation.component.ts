@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BackendService } from 'src/app/services/backend.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-emp-creation',
@@ -11,8 +12,11 @@ import { BackendService } from 'src/app/services/backend.service';
   styleUrls: ['./emp-creation.component.css']
 })
 export class EmpCreationComponent implements OnInit {
+searchTerm: string = '';
 date: any=Date;
 form:any;
+res: any[] = [];
+res1:any;
 hide = true;
 hide1 = true;
 pfStatus:any
@@ -23,6 +27,7 @@ currentDate: any;
 probitionValue:any;
 gender = ["Male","Female"];
 role=['Admin','Manager','TL','Employee'];
+  selectedRow: any;
   constructor(private fb:FormBuilder,
     private snackbar:MatSnackBar,
     public backend:BackendService,
@@ -31,6 +36,7 @@ role=['Admin','Manager','TL','Employee'];
   ngOnInit(): void {
     this.currentDate = Date();
     this.formbuilder();
+    this.getEmp();
     let vin=localStorage.getItem('CompId')
     console.log(vin);
   }
@@ -142,7 +148,7 @@ role=['Admin','Manager','TL','Employee'];
      
       this.backend.register(obj).subscribe((res:any)=> {
         console.log("----->",res.data);
-        this.router.navigate(['header/dashboard']);
+        window.location.reload();
       })
       this.backend.employeePay(obj1).subscribe((res:any)=>{
         console.log(">>>>>>>>>>",res)
@@ -152,4 +158,36 @@ role=['Admin','Manager','TL','Employee'];
   company(){
     this.router.navigate(['header/orgCreation']);
   } 
+  getEmp() {
+    this.backend.getAllEmployees().subscribe((data: any) => {
+      this.res = data.result;
+      this.res = data.result.map((vin: any) => {
+        vin.dob = moment(vin.dob).format('DD/MM/YYYY');
+        vin.doj = moment(vin.doj).format('DD/MM/YYYY');
+        return vin;
+      });
+    });
+  }
+
+  filterRes() {
+    return this.res.filter((row: any) =>
+      Object.values(row).some((value: any) =>
+        String(value).toLowerCase().includes(this.searchTerm.toLowerCase())
+      )
+    );
+  }
+
+  update(){
+
+  }
+  Delete(index: any,value:any){
+    this.selectedRow = value;
+    let empcode=this.selectedRow.empcode
+    console.log(empcode)
+    this.backend.deleteEmployees(empcode).subscribe((data:any)=>{
+      console.log(data)
+      this.getEmp();
+    })
+  }
+
 }

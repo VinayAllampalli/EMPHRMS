@@ -15,6 +15,7 @@ import * as moment from 'moment';
 export class MyTaskComponent implements OnInit {
   empcode:any;
   res:any;
+  res1:any;
   values:any;
   assignDate:any;
   selectedValue: any;
@@ -38,19 +39,12 @@ export class MyTaskComponent implements OnInit {
   gettask(){
     this.backend.gettask(this.empcode).subscribe((data:any)=>{
       console.log(data);
-      this.res = data.result
-      this.len=this.res.length
-      console.log(this.len)
-      
-
-      this.res = this.res.map((vin:any)=>{
+      this.res1 = data.result
+        this.res = this.res1.map((vin:any)=>{
         vin.assigneddate= moment(vin.assigneddate).format('DD/MM/YYYY');
         vin.startdate= moment(vin.startdate).format('DD/MM/YYYY');
         vin.enddate= moment(vin.enddate).format('DD/MM/YYYY');
         return vin ;
-
-       
-
        })
       // for (let i = 0; i < this.res.length; i++){
       //   this.assignDate = moment(this.res[i].assigneddate).format('DD/MMM/YYYY');

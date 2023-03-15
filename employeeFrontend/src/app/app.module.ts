@@ -111,12 +111,13 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
       echarts: () => import('echarts'),
     }),
   
-  
     
   
   ],
+ 
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [BackendService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

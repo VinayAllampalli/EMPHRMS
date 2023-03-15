@@ -27,7 +27,13 @@
             <p>No Holidays this week</p>
         </mat-card>
         <mat-card class="card">
-            <h3>Leaves Balance</h3>
+            <div class="container text-end">
+                <button pButton pRipple type="button" label="Apply Leave" class="p-button-rounded p-button-help" (click)="leave()"></button>
+            </div>
+           
+            <div id='main' style="height:250px;width:250px;margin-left: 50px;">
+            </div>
+           
         </mat-card>
         <mat-accordion class="card">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">

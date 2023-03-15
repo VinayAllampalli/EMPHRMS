@@ -96,4 +96,10 @@ export class BackendService {
   getallmyleaves(empCode:any){
     return this.http.get(`${environment.base_url}/getmyleaves/${empCode}`);
   }
+  getAllEmployees(){
+    return this.http.get(`${environment.base_url}/getAllEmp`);
+  }
+  deleteEmployees(empCode:any){
+    return this.http.delete(`${environment.base_url}/deleteEmp/${empCode}`)
+  }
 }
