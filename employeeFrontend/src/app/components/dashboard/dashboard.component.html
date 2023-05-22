@@ -5,12 +5,16 @@
         <!-- <div class="row"> -->
         <mat-card class="card" style=" background: linear-gradient(to bottom, #f5b2fe, #e0c6ec);">
             <div class="d-flex flex-row">
+                
                 <span>
                     <h3 style="font-weight: bold; color:rgb(146, 80, 132) ;">TODAY DATE - {{date}} {{dayName}}</h3>
                     <h4>Current Time </h4>
                     <p style=" font-size:25px;font-weight: bold;color:rgb(146, 80, 132)">{{dateTime | date:'HH:mm:ss'}}
                     </p>
                 </span>
+                <div class="container text-end">
+                    <button pButton pRipple type="button" icon="pi pi-clock" label="Web-Clock In" class="p-button-rounded p-button-help" (click)="clockIn()"></button>
+                </div>
             </div>
         </mat-card>
         <mat-card class="card">

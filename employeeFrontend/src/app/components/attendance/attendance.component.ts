@@ -33,8 +33,6 @@ empcode:any;
 
   ngOnInit(): void {
     this.empcode=localStorage.getItem('empcode');
-
-
   }
   submit(){
     this.backend.getattedance(this.empcode,this.date9).subscribe((data:any)=>{

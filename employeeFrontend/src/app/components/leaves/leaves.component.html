@@ -1,21 +1,22 @@
 <div class="container text-center">
     <div class="row justify-content-evenly">
-     
+
         <div class="col">
             <div id='main' style="height:250px;width:250px;margin-left: 30px;">
             </div>
-            
+
             <div class="container text-start">
                 <mat-card style="width:50%;
                 border:2px solid;
                 border-color:#203a43;margin-left: 8%;">
-            <h2 class="text">Total Leaves left </h2> <hr>
-            <h3>Sick Leave : {{SL}}</h3> 
-            <h3>Casual Leave : {{CL}}</h3> 
-            </mat-card>
+                    <h2 class="text">Total Leaves left </h2>
+                    <hr>
+                    <h3>Sick Leave : {{SL}}</h3>
+                    <h3>Casual Leave : {{CL}}</h3>
+                </mat-card>
             </div>
         </div>
-       
+
         <div class="col">
             <div class="container text-center">
                 <div class="d-flex justify-content-center">
@@ -73,10 +74,7 @@
             </div>
         </div>
     </div>
-
-
 </div>
-
 <div class="container text-center">
     <div class="d-flex justify-content-center">
         <mat-card class="card">
@@ -91,7 +89,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">Leave Type</th>
                         <th scope="col">No.of Days</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -105,10 +103,12 @@
                         <td>{{ row.typeofleave }}</td>
                         <td>{{ row.totaldays }}</td>
                         <td>
-                            <p *ngIf="row.status == 'Approved'"><button pButton  type="button" label="Approved" class="p-button-rounded p-button-success"></button></p>
-                            <p *ngIf="row.status == 'Reject'"><button pButton  type="button" label="Rejected" class="p-button-rounded p-button-danger"></button></p>
-                            <p *ngIf="row.status == 'Pending'"><button pButton  type="button" label="Pending" class="p-button-rounded p-button-warning"></button></p>
-                            
+                            <p *ngIf="row.status == 'Approved'"><button pButton type="button" label="Approved"
+                                    class="p-button-rounded p-button-success"></button></p>
+                            <p *ngIf="row.status == 'Reject'"><button pButton type="button" label="Rejected"
+                                    class="p-button-rounded p-button-danger"></button></p>
+                            <p *ngIf="row.status == 'Pending'"><button pButton type="button" label="Pending"
+                                    class="p-button-rounded p-button-warning"></button></p>
                         </td>
                     </tr>
                 </tbody>
@@ -121,7 +121,7 @@
               color: #203a43;
               margin-bottom: 3%;
             ">
-                        No Leaves 
+                        No Leaves
                     </h1>
                     <!-- <img style="height:250px;width:350px;" src="../../../assets/images/Noresultfound.jpg"> -->
                 </div>
@@ -129,5 +129,3 @@
         </mat-card>
     </div>
 </div>
-
-

@@ -31,6 +31,9 @@ import { PayslipsComponent } from './components/payslips/payslips.component';
 import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
+import { QrgeneratorComponent } from './components/qrgenerator/qrgenerator.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { HolidaysListComponent } from './components/holidays-list/holidays-list.component';
 
 
 
@@ -88,6 +91,8 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     PayslipsComponent,
     PayslipGenerstionComponent,
     LeaveApprovalComponent,
+    QrgeneratorComponent,
+    HolidaysListComponent,
 
 
     
@@ -107,6 +112,7 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     FormsModule,
     PickerModule,
     FullCalendarModule,
+    QRCodeModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

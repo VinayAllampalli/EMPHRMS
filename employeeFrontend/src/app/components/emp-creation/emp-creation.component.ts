@@ -13,6 +13,7 @@ import * as moment from 'moment';
 })
 export class EmpCreationComponent implements OnInit {
 searchTerm: string = '';
+searchQuery:string='';
 date: any=Date;
 form:any;
 res: any[] = [];
@@ -24,10 +25,16 @@ insuranceStatus:any;
 gratutityStatus:any;
 Checked: boolean = true;
 currentDate: any;
+EmpImage:any;
 probitionValue:any;
+EmpInfo:any;
 gender = ["Male","Female"];
 role=['Admin','Manager','TL','Employee'];
   selectedRow: any;
+  showTableView = true; 
+  dob:any;
+  doj:any;
+  EmpInfo1: any;
   constructor(private fb:FormBuilder,
     private snackbar:MatSnackBar,
     public backend:BackendService,
@@ -37,6 +44,7 @@ role=['Admin','Manager','TL','Employee'];
     this.currentDate = Date();
     this.formbuilder();
     this.getEmp();
+    this.getEmpImage();
     let vin=localStorage.getItem('CompId')
     console.log(vin);
   }
@@ -190,4 +198,24 @@ role=['Admin','Manager','TL','Employee'];
     })
   }
 
-}
+  getEmpImage(){
+    this.backend.getEmpWithImage().subscribe((res:any)=>{
+      this.EmpImage = res.result
+    })
+    }
+    getEmployeeData(empcode:any) {
+      console.log(empcode);
+      this.backend.getEmpInfo(empcode).subscribe((res:any)=>{
+        this.EmpInfo= res.result
+       this.EmpInfo1= this.EmpInfo.map((vin:any)=>{
+          vin.dob = moment(vin.dob).format('DD/MM/YYYY')
+          vin.doj= moment(vin.doj).format('DD/MM/YYYY');
+         return vin
+        })
+
+            })
+
+  }
+  }
+
+

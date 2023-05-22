@@ -4,257 +4,335 @@
         <mat-icon>domain</mat-icon>
     </button>
 </div> -->
-<mat-tab-group >
+<mat-tab-group>
     <mat-tab label="Employee Creation">
-<div class="container text-center">
-    <div class="d-flex justify-content-center">
-        <mat-card class="card">
-            <mat-card-label class="text">Employee Creation</mat-card-label>
-            <form [formGroup]="form" (ngSubmit)="submitform()">
-                <div class="row g-3">
-                    <div class="container text-start">
-                        <h3 style="margin-top: 3%;color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+        <div class="container text-center">
+            <div class="d-flex justify-content-center">
+                <mat-card class="card1">
+                    <mat-card-label class="text">Employee Creation</mat-card-label>
+                    <form [formGroup]="form" (ngSubmit)="submitform()">
+                        <div class="row g-3">
+                            <div class="container text-start">
+                                <h3 style="margin-top: 3%;color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
                         font-weight: 1000;">Personal Info</h3>
-                        <hr style="margin:0%;color:#203a43;">
-                    </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>FirstName</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="firstName">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Email</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="email">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>D.O.B</mat-label>
-                            <input matInput [matDatepicker]="date" [min]="currentDate" formControlName="DOB">
-                            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-                            <mat-datepicker #date></mat-datepicker>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Gender</mat-label>
-                            <mat-select formControlName="gender">
-                                <mat-option *ngFor="let loc of gender" [value]="loc">
-                                    {{loc}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>LastName</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="lastName">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Phone Number</mat-label>
-                            <input class="pointer" matInput type="tel" formControlName="phoneNo">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>FatherName / MotherName</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="FatherName">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Address</mat-label>
-                            <textarea matInput type="text" formControlName="address">
+                                <hr style="margin:0%;color:#203a43;">
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>FirstName</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="firstName">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Email</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="email">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>D.O.B</mat-label>
+                                    <input matInput [matDatepicker]="date" [min]="currentDate" formControlName="DOB">
+                                    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                                    <mat-datepicker #date></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Gender</mat-label>
+                                    <mat-select formControlName="gender">
+                                        <mat-option *ngFor="let loc of gender" [value]="loc">
+                                            {{loc}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>LastName</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="lastName">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Phone Number</mat-label>
+                                    <input class="pointer" matInput type="tel" formControlName="phoneNo">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>FatherName / MotherName</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="FatherName">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Address</mat-label>
+                                    <textarea matInput type="text" formControlName="address">
                                    </textarea>
-                        </mat-form-field>
-                    </div>
-                    <div class="container text-start">
-                        <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                                </mat-form-field>
+                            </div>
+                            <div class="container text-start">
+                                <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
                         font-weight: 1000;">Employee Statutory Info & Payment Info</h3>
-                        <hr style="margin:0%;color:#203a43;">
-                    </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Aadhar Number</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="AadharNumber">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Pan Number</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="PanNumber">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>PF/UAN Number</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="UanNumber">
-                        </mat-form-field>
-                    </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Bank Acc Number</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="bankAccNumber">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Bank Name</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="bankName">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Bank IFSC Code</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="bankIfscCode">
-                        </mat-form-field>
-                    </div>
+                                <hr style="margin:0%;color:#203a43;">
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Aadhar Number</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="AadharNumber">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Pan Number</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="PanNumber">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>PF/UAN Number</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="UanNumber">
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Bank Acc Number</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="bankAccNumber">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Bank Name</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="bankName">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Bank IFSC Code</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="bankIfscCode">
+                                </mat-form-field>
+                            </div>
+                            <div class="container text-start">
+                                <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                        font-weight: 1000;">Employee Details</h3>
+                                <hr style="margin:0%;color:#203a43;">
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Date Of Joining</mat-label>
+                                    <input matInput [matDatepicker]="date1" [min]="currentDate" formControlName="DOJ">
+                                    <mat-datepicker-toggle matSuffix [for]="date1"></mat-datepicker-toggle>
+                                    <mat-datepicker #date1></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Role</mat-label>
+                                    <mat-select formControlName="role">
+                                        <mat-option *ngFor="let x of role" [value]="x">
+                                            {{x}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Employee Code</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="EmpCode">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Department</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="department">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Create Password</mat-label>
+                                    <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
+                                        formControlName="password">
+                                    <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ?
+                                        'visibility_off' :
+                                        'visibility'}}
+                                    </mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Reporting Manager</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="ReportingManager">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Reporting Manger Id</mat-label>
+                                    <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Total CTC / Month</mat-label>
+                                    <input class="pointer" matInput type="number" formControlName="CTC">
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" style="width:70%;">
+                                    <mat-label>Company Mail Id</mat-label>
+                                    <input class="pointer" matInput type="email" formControlName="CompanymailId">
+                                </mat-form-field>
+
+                                <div class="row">
+                                    <mat-card style="width:50%;margin-left:18%">
+                                        <h3>Probition Period
+                                            <mat-slide-toggle (change)="Probition($event)"></mat-slide-toggle>
+
+                                        </h3>
+                                    </mat-card>
+                                </div>
+
+                            </div>
+                            <!-- <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch> -->
+
+                        </div>
+                    </form>
                     <div class="container text-start">
                         <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
-                        font-weight: 1000;">Employee Details</h3>
+                font-weight: 1000;">Employee Benfits</h3>
                         <hr style="margin:0%;color:#203a43;">
                     </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Date Of Joining</mat-label>
-                            <input matInput [matDatepicker]="date1" [min]="currentDate" formControlName="DOJ">
-                            <mat-datepicker-toggle matSuffix [for]="date1"></mat-datepicker-toggle>
-                            <mat-datepicker #date1></mat-datepicker>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Role</mat-label>
-                            <mat-select formControlName="role">
-                                <mat-option *ngFor="let x of role" [value]="x">
-                                    {{x}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Employee Code</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="EmpCode">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Department</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="department">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Create Password</mat-label>
-                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
-                                formControlName="password">
-                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
-                                'visibility'}}
-                            </mat-icon>
-                        </mat-form-field>
-                    </div>
-                    <div class="col">
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Reporting Manager</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="ReportingManager">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Reporting Manger Id</mat-label>
-                            <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Total CTC /  Month</mat-label>
-                            <input class="pointer" matInput type="number" formControlName="CTC">
-                        </mat-form-field>
+                    <div class="d-flex justify-content-center" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col">
+                            <mat-card style="width:80%;margin-left:18%">
+                                <h3>Employee PF
+                                    <mat-slide-toggle (change)="EmployeePF($event)"></mat-slide-toggle>
+                                    &nbsp;&nbsp;&nbsp;
+                                </h3>
+                            </mat-card>
+                        </div>
 
-                        <mat-form-field appearance="outline" style="width:70%;">
-                            <mat-label>Company Mail Id</mat-label>
-                            <input class="pointer" matInput type="email" formControlName="CompanymailId">
-                        </mat-form-field>
-
-                        <div class="row">
-                            <mat-card style="width:50%;margin-left:18%">
-                            <h3>Probition Period
-                            <mat-slide-toggle (change)="Probition($event)"></mat-slide-toggle> 
-                            
-                        </h3>
-                        </mat-card>
-                           </div>
-                       
+                        <div class="col">
+                            <mat-card style="width:80%;margin-left:18%">
+                                <h3>Gratuity
+                                    <mat-slide-toggle (change)="Gratuity($event)"></mat-slide-toggle> &nbsp;&nbsp;&nbsp;
+                                </h3>
+                            </mat-card>
+                        </div>
+                        <div class="col">
+                            <mat-card style="width:80%;margin-left:18%">
+                                <h3>Insurance
+                                    <mat-slide-toggle (change)="Insurance($event)"></mat-slide-toggle>
+                                    &nbsp;&nbsp;&nbsp;
+                                </h3>
+                            </mat-card>
+                        </div>
                     </div>
-                    <!-- <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch> -->
-                   
-                </div>
-            </form>
-            <div class="container text-start">
-                <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
-                font-weight: 1000;">Employee Benfits</h3>
-                <hr style="margin:0%;color:#203a43;">
-                </div>
-                <div class="d-flex justify-content-center" style="margin-top:20px;margin-bottom:20px;">
-                    <div class="col">
-                        <mat-card style="width:80%;margin-left:18%">
-                <h3>Employee PF
-            <mat-slide-toggle (change)="EmployeePF($event)"></mat-slide-toggle> &nbsp;&nbsp;&nbsp;
-            </h3>
-            </mat-card>
-            </div>
-        
-            <div class="col">
-                <mat-card style="width:80%;margin-left:18%">
-            <h3>Gratuity
-            <mat-slide-toggle (change)="Gratuity($event)"></mat-slide-toggle>  &nbsp;&nbsp;&nbsp;
-            </h3>
-            </mat-card>
-            </div>
-            <div class="col">
-                <mat-card style="width:80%;margin-left:18%">
-            <h3>Insurance
-            <mat-slide-toggle (change)="Insurance($event)"></mat-slide-toggle>  &nbsp;&nbsp;&nbsp;
-            </h3>
-            </mat-card>
-            </div>
-            </div>
-            <div class="container text-center">
-                <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
-                    (click)="submitform()" style=" border:2px solid;
+                    <div class="container text-center">
+                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                            (click)="submitform()" style=" border:2px solid;
                 border-color:#fdfdfd;"></button>
+                    </div>
+                </mat-card>
             </div>
-        </mat-card>
-    </div>
-</div>
-</mat-tab>
-<mat-tab label="All Employees">
-    <div class="row">
-    <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search" style="width:20%;margin-top: 2%;margin-left: 2%;">
-        <button pButton pRipple type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger" style="margin-top:3%" (click)="searchTerm=''"></button>
         </div>
-    <table class="table table-striped" style="margin-top:1%">
-        <thead>
-            <tr>
-                <th style="text-align: center;max-width:200px">EmpCode</th>
-                <th>Name</th>
-                <th>Phone.No</th>
-                <th>Email</th>
-                <th>DOB</th>
-                <th>Address</th>
-                <th>Role</th>
-                <th>ReportingMangerID</th>
-                <th>Department</th>
-                <th>DOJ</th>
-                <th>Aadhar.No</th>
-                <th>Pan.No</th>
-                <th>Pf.No</th>
-                <th>BankAcc.No</th>
-                <th>BankIFSC.Code</th>
-                <th >Action</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <tr *ngFor="let row of filterRes(),let i = index">
-                <td>{{ row.empcode }}</td>
-                <td>{{row.firstname}} {{row.lastname}}</td>
-                <td>{{ row.phoneno }}</td>
-                <td>{{ row.email }}</td>
-                <td>{{ row.dob }}</td>
-                <td>{{ row.address }}</td>
-                <td>{{ row.role }}</td>
-                <td>{{ row.reportingmangerid }}</td>
-                <td>{{ row.department }}</td>
-                <td>{{ row.doj }}</td>
-                <td>{{ row.aadharnumber }}</td>
-                <td>{{ row.pannumber }}</td>
-                <td>{{ row.uannumber }}</td>
-                <td>{{ row.bankaccnumber }}</td>
-                <td>{{ row.bankifsccode }}</td>
-                <td>
-                    <button pButton pRipple type="button" icon="pi pi-pencil"  class="p-button-rounded p-button-primary" (click)="update()"></button>
-                </td> 
-                <td>
-                <button pButton pRipple type="button" icon="pi pi-trash"  class="p-button-rounded p-button-danger" (click)="Delete(i, row)"></button> 
-                </td>
-                </tr>
+    </mat-tab>
+    <mat-tab label="All Employees">
+      <div class="d-flex flex-row-reverse" style='margin-top: 3%;'>
+            
+            <button pButton pRipple type="button" class="p-button-rounded p-button-primary"
+                (click)="showTableView = false">Other Format View</button> &nbsp; &nbsp;
+                <button pButton pRipple type="button" class="p-button-rounded p-button-primary"
+                (click)="showTableView = true">Table View</button>
+                </div>
+       
+        <div *ngIf="showTableView">
+            <div class="row">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search"
+                    style="width:20%;margin-top: 2%;margin-left: 2%;">
+                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"
+                    style="margin-top:3%" (click)="searchTerm=''"></button>
+            </div>
+            <table class="table table-striped" style="margin-top:1%">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;max-width:200px">EmpCode</th>
+                        <th>Name</th>
+                        <th>Phone.No</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        <th>ReportingMangerID</th>
+                        <th>Department</th>
+                        <th>DOJ</th>
+                        <th>Aadhar.No</th>
+                        <th>Pan.No</th>
+                        <th>Pf.No</th>
+                        <th>BankAcc.No</th>
+                        <th>BankIFSC.Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let row of filterRes(),let i = index">
+                        <td>{{ row.empcode }}</td>
+                        <td>{{row.firstname}} {{row.lastname}}</td>
+                        <td>{{ row.phoneno }}</td>
+                        <td>{{ row.email }}</td>
+                        <td>{{ row.dob }}</td>
+                        <td>{{ row.address }}</td>
+                        <td>{{ row.role }}</td>
+                        <td>{{ row.reportingmangerid }}</td>
+                        <td>{{ row.department }}</td>
+                        <td>{{ row.doj }}</td>
+                        <td>{{ row.aadharnumber }}</td>
+                        <td>{{ row.pannumber }}</td>
+                        <td>{{ row.uannumber }}</td>
+                        <td>{{ row.bankaccnumber }}</td>
+                        <td>{{ row.bankifsccode }}</td>
+                        <td>
+                            <button pButton pRipple type="button" icon="pi pi-pencil"
+                                class="p-button-rounded p-button-primary" (click)="update()"></button>
+                        </td>
+                        <td>
+                            <button pButton pRipple type="button" icon="pi pi-trash"
+                                class="p-button-rounded p-button-danger" (click)="Delete(i, row)"></button>
+                        </td>
+                    </tr>
                 </tbody>
-                </table>
-            </mat-tab>
+            </table>
+
+        </div>
+        <div *ngIf="!showTableView">
+            <div class="container text-start">
+                <div class="row">
+                    <div class="card" style="width: 35%;">
+                        <div class="card-body">
+                            <h1 style="text-align:center; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                                font-weight: 1000;">Employees List</h1>
+                            <input type="text" [(ngModel)]="searchQuery" placeholder="Search by Employee Code">
+                            <div *ngFor="let x of EmpImage">
+                                <div *ngIf="x.empcode.includes(searchQuery)">
+                                    <mat-card class="card1" style="width:100%" (click)="getEmployeeData(x.empcode)">
+                                        <div class="d-flex flex-row">
+                                            <!-- i wrote if condition to display  -->
+                                            <img class="circle"
+                                                src="{{ x.file && x.file !== 'No image' ? x.file : '../../../../../assets/images/tree.jpg' }}" />
+                                            &nbsp; &nbsp;
+                                            <div class="col" style="margin-top: 10%;">
+                                                <h4>Name: {{x.firstname}} {{x.lastname}}</h4>
+                                                <h4>Employee Code: {{x.empcode}}</h4>
+                                            </div>
+                                        </div>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>&nbsp; &nbsp;
+                    <div class="card" style="width: 63%;">
+                        <div class="card-body">
+                            <h1 style="text-align:center; font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                            font-weight: 1000;">Employee Info</h1>
+                            <hr>
+                            <div *ngFor="let value of EmpInfo1">
+                                <div class="d-flex flex-row">
+                                
+                                        <div class="col">
+                                            <h2>Name: {{value.firstname}} {{value.lastname}}</h2>
+                                            <h2>Email: {{value.email}}</h2>
+                                            <h2>Phone number: {{value.phoneno}}</h2>
+                                            <h2>D.O.B: {{value.dob}}</h2>
+                                            <h2>Aadhar Number: {{value.aadharnumber}}</h2>
+                                            <h2>Pan Number: {{value.pannumber}}</h2>
+                                            <h2>PF Number: {{value.uannumber}}</h2>
+                                            <h2>Bank Account: {{value.bankaccnumber}}</h2>
+                                            <h2>Address: {{value.address}}</h2>
+                                        </div> 
+                                        
+                                    <div class="col" >
+                                        <h2>Employee Code:{{value.empcode}}</h2>
+                                        <h2>Role: {{value.role}}</h2>
+                                        <h2>R.M ID: {{value.reportingmangerid}}</h2>
+                                        <h2>R.M Name: {{value.reportingmanager}}</h2>
+                                        <h2>Department: {{value.department}}</h2>
+                                        <h2>Company Email: {{value.companymailid}}</h2>
+                                        <h2>Probition Status: {{value.probitionstatus}}</h2>
+                                        <h2>D.O.J: {{value.doj}}</h2>
+                                     </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
 </mat-tab-group>
-
-
-

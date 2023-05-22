@@ -228,6 +228,9 @@ getallLeaves() {
     leave(){
       this.router.navigate(['header/leaves']);
     }
+    clockIn(){
+      this.router.navigate(['header/checkInOut'])
+    }
  
 }
 

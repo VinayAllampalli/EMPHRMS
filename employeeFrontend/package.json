@@ -24,6 +24,7 @@
     "@fullcalendar/angular": "^6.1.0",
     "@fullcalendar/daygrid": "^6.1.0",
     "@googlemaps/js-api-loader": "^1.15.1",
+    "angularx-qrcode": "^13.0.15",
     "bootstrap": "^5.2.3",
     "moment": "^2.29.4",
     "ngx-echarts": "^8.0.1",

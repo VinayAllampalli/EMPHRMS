@@ -102,4 +102,10 @@ export class BackendService {
   deleteEmployees(empCode:any){
     return this.http.delete(`${environment.base_url}/deleteEmp/${empCode}`)
   }
+  getEmpWithImage(){
+    return this.http.get(`${environment.base_url}/getEmployeeDatawithImage`)
+  }
+  getEmpInfo(empCode:any){
+    return this.http.get(`${environment.base_url}/empInfo/${empCode}`); 
+  }
 }

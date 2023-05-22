@@ -18,6 +18,8 @@ import { AttendanceComponent } from './components/attendance/attendance.componen
 import { PayslipsComponent } from './components/payslips/payslips.component';
 import { PayslipGenerstionComponent } from './components/payslip-generstion/payslip-generstion.component';
 import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
+import { QrgeneratorComponent } from './components/qrgenerator/qrgenerator.component';
+import { HolidaysListComponent } from './components/holidays-list/holidays-list.component';
 
 
 const routes: Routes = [
@@ -112,6 +114,17 @@ const routes: Routes = [
         path:'leavesApproval',
         component:LeaveApprovalComponent,
         canActivate:[AuthGuard]
+      },
+      {
+        path:'QRCODE',
+        component:QrgeneratorComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path:'holidays',
+        component:HolidaysListComponent,
+        canActivate:[AuthGuard]
+
       }
     ]
   }
