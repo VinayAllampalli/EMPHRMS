@@ -3,17 +3,18 @@
 <div class="d-flex flex-row mb-3">
     <div class="d-flex flex-column">
         <!-- <div class="row"> -->
-        <mat-card class="card" style=" background: linear-gradient(to bottom, #f5b2fe, #e0c6ec);">
+        <mat-card class="card" style=" background: linear-gradient(to bottom, #c6e4d7, #9ed5be);">
             <div class="d-flex flex-row">
-                
+
                 <span>
-                    <h3 style="font-weight: bold; color:rgb(146, 80, 132) ;">TODAY DATE - {{date}} {{dayName}}</h3>
+                    <h3 style="font-weight: bold; color:#355178 ;">TODAY DATE - {{date}} {{dayName}}</h3>
                     <h4>Current Time </h4>
-                    <p style=" font-size:25px;font-weight: bold;color:rgb(146, 80, 132)">{{dateTime | date:'HH:mm:ss'}}
+                    <p style=" font-size:25px;font-weight: bold;color:#355178">{{dateTime | date:'HH:mm:ss'}}
                     </p>
                 </span>
                 <div class="container text-end">
-                    <button pButton pRipple type="button" icon="pi pi-clock" label="Web-Clock In" class="p-button-rounded p-button-help" (click)="clockIn()"></button>
+                    <button pButton pRipple type="button" icon="pi pi-clock" label="Web-Clock In"
+                        class="p-button-rounded" style="background-color:#355178" (click)="clockIn()"></button>
                 </div>
             </div>
         </mat-card>
@@ -26,18 +27,33 @@
                 </div>
             </div>
         </mat-card>
-        <mat-card class="card" style="background-image:url('../../../assets/images/Capture.JPG')">
-            <h3>Holidays</h3>
-            <p>No Holidays this week</p>
+        <mat-card class="card4">
+            <div>
+           
+                <ng-container *ngIf="todayHoliday">
+                    <img class="logo1" [src]="todayHoliday?.file">
+                    <h4 class="top-left">Happy {{ todayHoliday?.holidayname }}
+                    </h4>
+                </ng-container>
+                <ng-container *ngIf="!todayHoliday && upcomingHoliday">
+                    <div>
+    
+                        <img class="logo1" [src]="upcomingHoliday?.file">
+                        <h4 class="top-left">{{ upcomingHoliday?.holidayname }} </h4>
+                        <h4 class="top-left" style="margin-top:35px;">{{ upcomingHoliday?.holidaydate | date: 'MMM d, y'
+                            : 'UTC'  }} </h4>
+                    </div>
+                </ng-container>
+                <h5 class="top-right" style="font-size:small;cursor: pointer;" (click)="allHolidays()">Viewall</h5>
+            </div>
         </mat-card>
         <mat-card class="card">
             <div class="container text-end">
-                <button pButton pRipple type="button" label="Apply Leave" class="p-button-rounded p-button-help" (click)="leave()"></button>
+                <button pButton pRipple type="button" label="Apply Leave" class="p-button-rounded"
+                    style="background-color:#355178" (click)="leave()"></button>
             </div>
-           
             <div id='main' style="height:250px;width:250px;margin-left: 50px;">
             </div>
-           
         </mat-card>
         <mat-accordion class="card">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -81,7 +97,8 @@
                             </span>
                             <span *ngIf="work!=0">
                                 <img style="height:250px;width:350px;" src="../../../assets/images/tree.jpg">
-                                <h1 *ngFor="let x of work" class="text"> HAPPY WORK ANNIVERSARIE  {{x.firstname}} {{x.lastname}}
+                                <h1 *ngFor="let x of work" class="text"> HAPPY WORK ANNIVERSARIE {{x.firstname}}
+                                    {{x.lastname}}
                                 </h1>
                             </span>
                         </div>
@@ -123,9 +140,5 @@
                 </p-tabPanel>
             </p-tabView>
         </mat-card>
-
     </div>
 </div>
-
-
-

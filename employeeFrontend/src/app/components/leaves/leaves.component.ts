@@ -54,12 +54,9 @@ export class LeavesComponent implements OnInit {
   getallLeaves() {
     this.backend.allLeaves(this.empcode).subscribe((leavedata: any) => {
       let res = leavedata.result
-      console.log(res)
       for (let i = 0; i < res.length; i++) {
         this.CL = res[i].casualleaves;
         this.SL = res[i].sickleave;
-        console.log(this.CL)
-        console.log(this.SL)
       }
  
       // update chart data

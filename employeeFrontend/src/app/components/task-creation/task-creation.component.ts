@@ -25,6 +25,9 @@ export class TaskCreationComponent implements OnInit {
   status=['Todo'];
   empcode:any;
   companyId:any;
+  task:any;
+  searchText: string = ''; 
+  filteredTasks: any;
  
  
   constructor(private fb:FormBuilder,
@@ -39,7 +42,8 @@ export class TaskCreationComponent implements OnInit {
     this.formbuilder()
     this.getemployees();
     this.empcode=localStorage.getItem('empcode');
-    this.companyId = localStorage.getItem('CompId')
+    this.companyId = localStorage.getItem('CompId');
+    this.getallTaskAssigned();
   }
   formbuilder() {
     this.form = this.fb.group({
@@ -80,5 +84,19 @@ export class TaskCreationComponent implements OnInit {
       console.log(data)
       window.location.reload();
     })
+  }
+  getallTaskAssigned(){
+    this.backend.getAssignedTasks(this.empcode,this.companyId).subscribe((data:any)=>{
+      console.log(data.result)
+      this.task = data.result;
+      this.filterTasks();
+    })
+  }
+  filterTasks() {
+    this.filteredTasks = this.task.filter((task: any) =>
+      Object.values(task).some((value: any) =>
+        String(value).toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
   }
 }

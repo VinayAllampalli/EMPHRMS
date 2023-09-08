@@ -1,4 +1,4 @@
-<p>qrgenerator works!</p>
+<!-- <p>qrgenerator works!</p>
 <form [formGroup]="form">
     <label for="first-name">First Name:</label>
     <input id="first-name" type="text" formControlName="firstName" />
@@ -8,5 +8,12 @@
   <button (click)="generateQR()">Generate QR Code</button>
   <qrcode *ngIf="showQRCode" [qrdata]="qrData" [width]="256" #qrCode>
   </qrcode>
- 
+  -->
+
+
+  <div class="image-container">
+    <img [src]="currentImage" alt="Image" (keydown)="onKeyDown($event)">
+  </div>
+
+
 

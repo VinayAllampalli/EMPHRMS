@@ -20,6 +20,11 @@ import { PayslipGenerstionComponent } from './components/payslip-generstion/pays
 import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
 import { QrgeneratorComponent } from './components/qrgenerator/qrgenerator.component';
 import { HolidaysListComponent } from './components/holidays-list/holidays-list.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginWithGoogleComponent } from './components/login-with-google/login-with-google.component';
+import { OrganizationTreeComponent } from './components/organization-tree/organization-tree.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { HolidaysComponent } from './components/holidays/holidays.component';
 
 
 const routes: Routes = [
@@ -33,17 +38,35 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+     path:"loginWithGoogle",
+     component:LoginWithGoogleComponent
+  },
+  {
+    path: 'forgotPassword',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'orgCreation',
+    component: OrgCreationComponent,
+  },
+
+
+  {
     path: 'header',
     component: HeaderComponent, children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: '',
         pathMatch: "full"
       },
       {
         path: "dashboard",
         component: DashboardComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path:"adminDashboard",
+        component:AdminDashboardComponent
       },
       {
         path: "checkInOut",
@@ -55,11 +78,7 @@ const routes: Routes = [
         component: EmpCreationComponent,
         canActivate: [AuthGuard]
       },
-      {
-        path: 'orgCreation',
-        component: OrgCreationComponent,
-        canActivate: [AuthGuard]
-      },
+
       {
         path: 'taskCreation',
         component: TaskCreationComponent,
@@ -96,36 +115,47 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path:'attendance',
-        component:AttendanceComponent,
-        canActivate:[AuthGuard]
+        path: 'attendance',
+        component: AttendanceComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path:'payslips',
-        component:PayslipsComponent,
-        canActivate:[AuthGuard]
+        path: 'payslips',
+        component: PayslipsComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path:'payslipGeneration',
-        component:PayslipGenerstionComponent,
-        canActivate:[AuthGuard]
+        path: 'payslipGeneration',
+        component: PayslipGenerstionComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path:'leavesApproval',
-        component:LeaveApprovalComponent,
-        canActivate:[AuthGuard]
+        path: 'leavesApproval',
+        component: LeaveApprovalComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path:'QRCODE',
-        component:QrgeneratorComponent,
+        path: 'QRCODE',
+        component: QrgeneratorComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'holidayslist',
+        component: HolidaysListComponent,
+        canActivate: [AuthGuard]
+
+      },
+      {
+        path:'organizationTree',
+        component:OrganizationTreeComponent,
         canActivate:[AuthGuard]
       },
       {
         path:'holidays',
-        component:HolidaysListComponent,
+        component:HolidaysComponent,
         canActivate:[AuthGuard]
-
       }
+
     ]
   }
 ];

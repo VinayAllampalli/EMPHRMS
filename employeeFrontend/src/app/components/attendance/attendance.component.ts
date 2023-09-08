@@ -33,7 +33,26 @@ empcode:any;
 
   ngOnInit(): void {
     this.empcode=localStorage.getItem('empcode');
+    this.getDefaultData();
   }
+  getDefaultData(): void {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentYear = currentDate.getFullYear();
+    const defaultDate = currentYear + '-' + currentMonth;
+
+    this.backend.getattedance(this.empcode, defaultDate).subscribe((data: any) => {
+      this.value = data.result;
+      this.len = this.value.length;
+
+      this.value = this.value.map((vin: any) => {
+        vin.log_date = moment(vin.log_date).format('DD/MM/YYYY');
+        return vin;
+      });
+    });
+  }
+
+
   submit(){
     this.backend.getattedance(this.empcode,this.date9).subscribe((data:any)=>{
     this.value = data.result 

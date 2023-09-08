@@ -2,7 +2,7 @@
     width: 30rem;
     margin-bottom: 2em;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     margin-left: 5em;
     margin-top: 0.2em;
     
@@ -15,7 +15,7 @@
     width: 30rem;
     margin-bottom: 2em;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     margin-left: 10em;
     margin-top: 0.2em;
     height: 225px;  
@@ -50,11 +50,47 @@ h3{
     width: 30rem;
     margin-bottom: 2em;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     margin-left: 10em;
     margin-top: 0.2em;
     height: 225px;  
 }
+
+.logo1{
+    height: 120px;
+    width: 476px;
+}
+.card4{
+    width: 30rem;
+    border:2px solid;
+    border-color:#355178;
+    margin-left: 5em;
+    margin-top: 0.2em;
+    margin-bottom: 2em;
+    padding: 0;
+    
+}
+
+.top-left {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    color: white;
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    font-weight: 1000;
+    font-size:x-large;
+  }
+.top-right{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+  }
+
+
+
+
+
 
 
 

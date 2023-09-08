@@ -1,8 +1,42 @@
 .card{
-    margin-top: 5%;
+    margin-top: 1%;
     text-align: center;
     color: #203a43;
     border:2px solid;
-    border-color:#203a43;
-    width: 80%;
+    border-color:#355178;
+    width:85%;
 }
+.title{
+    color: #203a43; 
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    /* margin-left: 5%; */
+    font-weight: 400;
+    text-align: center;
+    font-size:x-large;
+    margin-top: 2%;
+}
+.tablecard{
+    margin-top: 2%;
+    color: #203a43;
+    border:2px solid;
+    border-color:#355178;
+    width:95%;
+    margin-left: 2.5%;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+    margin-left: 3%;
+    text-align: left;
+    margin-top: 2%;
+  }
+  .search-icon {
+    position: absolute;
+    right: 0.75rem;
+    pointer-events: none;
+    display: flex;
+    color: #6c757d; 
+  }

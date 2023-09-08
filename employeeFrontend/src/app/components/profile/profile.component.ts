@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
   idCard(){
     this.dialog.open(IdCardComponent,{
       width: '400px',
-      height:'530px'
+      height:'600px'
     })
   }
 

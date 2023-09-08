@@ -1,9 +1,9 @@
 .card2{
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: center;
     color: #203a43;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     margin-left: 15%;
     margin-right: 15%;
    
@@ -12,8 +12,8 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border:2px solid;border-color:#203a43;
-    margin-left: 30%;
+    border:2px solid;border-color:#355178;
+    /* margin-left: 30%; */
   }
 .data{
     font-family: Brush Script MT, Lucida Handwriting, Cursive;
@@ -30,13 +30,11 @@
 
 }
 .card1{  margin-bottom: 10%;
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: center;
     color: #20432f;
     border:2px solid;
-    border-color:#203a43;
-    /* margin-left: 10%;
-    margin-right: 10%; */
+    border-color:#355178;
   
   
 
@@ -46,10 +44,19 @@
     font-weight: 200;
     color:#949b9b;
     margin-left: 5%;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .vl {
     border-left: 6px solid green;
     height: 200px;
     
   }
+  .title{
+    color: #203a43; 
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+   
+    font-weight: 400;
+    text-align: start;
+    font-size:x-large;
+    margin-left: 6%;
+}

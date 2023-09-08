@@ -10,6 +10,9 @@ export class IdCardComponent implements OnInit {
   empcode:any;
   res:any
   company:any;
+  compId:any;
+  compData:any;
+  
   constructor(private backend:BackendService) { }
 
   ngOnInit(): void {
@@ -17,6 +20,8 @@ export class IdCardComponent implements OnInit {
     this.getimage()
     this.getemp()
     this.company=localStorage.getItem('CompName')
+    this.compId = localStorage.getItem('CompId')
+    this.getComp()
   }
   getimage(){
     this.backend.getempImage(this.empcode).subscribe((data:any)=>{
@@ -31,6 +36,11 @@ export class IdCardComponent implements OnInit {
     this.backend.getemployees(this.empcode).subscribe((data:any)=>{
       this.res = data.result
       console.log(this.res)
+    })
+  }
+  getComp(){
+    this.backend.getCompany(this.compId).subscribe((res:any)=>{
+      this.compData = res.result
     })
   }
 

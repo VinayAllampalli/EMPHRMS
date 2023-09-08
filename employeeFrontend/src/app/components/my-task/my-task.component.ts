@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BackendService } from 'src/app/services/backend.service';
 import * as moment from 'moment';
-
+import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-my-task',
@@ -23,6 +23,14 @@ export class MyTaskComponent implements OnInit {
   eDate:any;
   len:any;
   selectedRow: any;
+  searchText: string = ''; 
+  filteredTasks: any;
+  disableUpdateButton: boolean = true;
+  statusOptions: SelectItem[] = [
+    { label: 'In Progress', value: 'In Progress' },
+    { label: 'Todo', value: 'Todo' },
+    { label: 'Done', value: 'Done' }
+  ];
   constructor(private fb:FormBuilder,
     private snackbar:MatSnackBar,
     private ngxService:NgxUiLoaderService,
@@ -33,19 +41,19 @@ export class MyTaskComponent implements OnInit {
   ngOnInit(): void {
     this.empcode=localStorage.getItem('empcode');
     this.gettask()
-   
   }
 
   gettask(){
     this.backend.gettask(this.empcode).subscribe((data:any)=>{
       console.log(data);
       this.res1 = data.result
-        this.res = this.res1.map((vin:any)=>{
-        vin.assigneddate= moment(vin.assigneddate).format('DD/MM/YYYY');
-        vin.startdate= moment(vin.startdate).format('DD/MM/YYYY');
-        vin.enddate= moment(vin.enddate).format('DD/MM/YYYY');
-        return vin ;
-       })
+      this.filterTasks();
+      //   this.res = this.res1.map((vin:any)=>{
+      //   vin.assigneddate= moment(vin.assigneddate).format('DD/MM/YYYY');
+      //   vin.startdate= moment(vin.startdate).format('DD/MM/YYYY');
+      //   vin.enddate= moment(vin.enddate).format('DD/MM/YYYY');
+      //   return vin ;
+      //  })
       // for (let i = 0; i < this.res.length; i++){
       //   this.assignDate = moment(this.res[i].assigneddate).format('DD/MMM/YYYY');
       //   this.sDate = moment(this.res[i].startdate).format('DD/MMM/YYYY');
@@ -53,18 +61,26 @@ export class MyTaskComponent implements OnInit {
         
         
       // }
-      
     })
+  }
+  filterTasks() {
+    this.filteredTasks = this.res1.filter((task: any) =>
+      Object.values(task).some((value: any) =>
+        String(value).toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    );
   }
   updateTaskStatus(index: any,value:any){
     this.selectedRow = value;
     let taskId=this.selectedRow.taskid
-   this.backend.updateStatus(taskId).subscribe(data=>{
+    let status = this.selectedRow.status
+   this.backend.updateStatus(taskId,{ status: status }).subscribe(data=>{
    })
-  //  window.location.reload()
+   window.location.reload()
   this.gettask()
   }
- 
-  
-
+  getStatusOptions(currentStatus: string): any[] {
+    const options = [currentStatus, ...this.statusOptions.filter(option => option.value !== currentStatus)];
+    return options;
+  }
 }

@@ -10,6 +10,9 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {PanelModule} from 'primeng/panel';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {TableModule} from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+import { OrganizationChartModule } from 'primeng/organizationchart';
+
 @NgModule({
     exports:[
         ButtonModule,
@@ -22,9 +25,10 @@ import {TableModule} from 'primeng/table';
         CheckboxModule,
         PanelModule,
         InputSwitchModule,
-        TableModule
-
-       
+        TableModule,
+        PaginatorModule,
+        OrganizationChartModule
+            
     ]
 })
 export class PrimeNgModule{}

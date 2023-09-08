@@ -1,0 +1,33 @@
+.image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border:2px solid;border-color:#355178;
+}
+.custom-node {
+    background-color: red;
+    /* Other styles */
+}
+.title{
+    color: #203a43; 
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    margin-left: 2%;
+    font-weight: 400;
+    text-align: start;
+    font-size:x-large;
+    margin-top: 2%;
+}
+
+.card{
+    width:50%;
+    margin-top:5%;
+    margin-left:10%;
+    display: flex;
+    border:2px solid;
+    border-color:#355178;
+
+}
+
+
+
+

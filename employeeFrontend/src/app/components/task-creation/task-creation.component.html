@@ -1,3 +1,6 @@
+<mat-tab-group >
+  <mat-tab label="Task Creation">
+<h1 class="title">Create Task</h1>
 <div class="container text-center">
   <div class="d-flex justify-content-center">
     <mat-card class="card">
@@ -23,7 +26,7 @@
           </p-dropdown>
         </div>
         <div class="row">
-          <textarea class="form-control" style="width:100%;margin-top:2%;" type="text" required
+          <textarea class="form-control" style="width:95%;margin-top:2%;margin-left: 2%;" type="text" required
             [(ngModel)]="newItem.taskDescription" placeholder="Enter Task Details"></textarea>
         </div>
         <div class="col">
@@ -69,3 +72,49 @@
     </mat-card>
   </div>
 </div>
+</mat-tab>
+<mat-tab label="List of tasks Assign by you">
+
+  <!-- <input type="text" [(ngModel)]="searchText" (input)="filterTasks()" placeholder="Search" class="search-input"> -->
+
+ 
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchText" (input)="filterTasks()" pInputText placeholder="Search" style="margin-top: 2%;margin-right: 30%;">
+      <span class="search-icon">
+        <i class="pi pi-search"></i>
+      </span>
+      </div>
+  <div class="tablecard">
+    <p-table [value]="filteredTasks">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="taskid" style="width:10%">TaskId<p-sortIcon field="taskid"></p-sortIcon></th>
+                <th pSortableColumn="taskdescription" style="width:35%">TaskDescription<p-sortIcon field="taskdescription"></p-sortIcon></th>
+                <th pSortableColumn="userempcode" style="width:15%">AssignedTo<p-sortIcon field="userempcode"></p-sortIcon></th>
+                <th pSortableColumn="startdate" style="width:15%">StartDate<p-sortIcon field="startdate"></p-sortIcon></th>
+                <th pSortableColumn="enddate" style="width:15%">EndDate<p-sortIcon field="enddate"></p-sortIcon></th>
+                <th pSortableColumn="status" style="width:20%">Status<p-sortIcon field="status"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task>
+            <tr >
+                <td>{{task.taskid}}</td>
+                <td>{{task.taskdescription}}</td>
+                <td>{{task.userempcode}}</td>
+                <td>{{task.startdate | date:'dd-MM-YYYY'}}</td>
+                <td>{{task.enddate | date:'dd-MM-YYYY'}}</td>
+                <td>
+            <p *ngIf="task.status == 'Todo'"><button pButton type="button" label="Todo"
+                    class="p-button-rounded p-button-primary"></button></p>
+            <p *ngIf="task.status == 'Completed'"><button pButton type="button" label="Done"
+                    class="p-button-rounded p-button-success"></button></p>
+                    <p *ngIf="task.status == 'In Progress'"><button pButton type="button" label="InProgress"
+                      class="p-button-rounded p-button-warning"></button></p>
+
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+  </mat-tab>
+</mat-tab-group>

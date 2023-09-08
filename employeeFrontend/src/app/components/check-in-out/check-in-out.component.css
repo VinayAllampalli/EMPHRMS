@@ -1,12 +1,17 @@
 .card{
-    margin-top: 5%;
+    margin-top: 3%;
     text-align: center;
     color: #203a43;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     width: 70%;
 }
 th{
     color:#203a43;
     font-family: Brush Script MT, Lucida Handwriting, Cursive;
+}
+.text{
+    color:#203a43;
+    font-family: Brush Script MT, Lucida Handwriting, Cursive; 
+    
 }

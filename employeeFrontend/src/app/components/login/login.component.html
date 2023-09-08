@@ -1,45 +1,117 @@
-<body style="background-image: url('./assets/images/Gray-plain-website-background.jpg');">
-    <div class="container text-center">
-        <div class="d-flex justify-content-center">
+<body style="background-color:#355178">
 
-            <mat-card class="card">
-                <mat-card-label>LOGIN</mat-card-label>
-                <form [formGroup]="form" (ngSubmit)="submitform()">
-                    <mat-card-content>
-                        <mat-form-field appearance="outline" style="width:70%;margin-top: 3%;">
-                            <mat-label style="color:white" for="EmpCode">EmpCode</mat-label>
-                            <mat-icon matPrefix> email</mat-icon>
-                            <input class="pointer" matInput type="text" formControlName="EmpCode">
-                            <mat-error *ngIf="EmpCode.touched && EmpCode.invalid">
-                            </mat-error>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" style="width:70%;color:white">
-                            <mat-label style="color:white" for="password">Password</mat-label>
-                            <mat-icon matPrefix>lock</mat-icon>
-                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
-                                formControlName="password">
-                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ? 'visibility_off' :
-                                'visibility'}}
-                            </mat-icon>
-                            <mat-error *ngIf="password.touched && password.invalid">
+    <div class="container text-start">
 
-                            </mat-error>
-                        </mat-form-field>
-                    </mat-card-content>
-                    <div fxLayout="row" fxLayoutAlign="center center">
-                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
-                            (click)="submitform()"></button>
+        <div class="row">
+            <div class="col start">
+                <img class="imgg" src="../../../assets/images/tria.jpeg">
+            </div>
+           
+            <div class ="col">
+                <div class="container text-center">
+                    <div class="row">
+                        <div  *ngIf="isLoginForm">
+                        <div
+                            style="border: 2px solid rgb(195, 252, 249);border-radius: 20px; width: 100%;margin-top: 18%">
+                            <div class="col" style="margin-top:4%;">
+                                <img class="logo" src="../../../assets/images/EP.jpg"> 
+                                <span style="color: white">  WORKBENCH </span>
+                                <span style="color: yellow">360</span>
+                            </div>
+                            <h2 style="margin-top: 5%;color:white">Good to see you again </h2>
+                            <form [formGroup]="form" (ngSubmit)="submitform()">
+                                <mat-card-content>
+                                    <div>
+                                        <mat-form-field appearance="outline" style="width:60%;margin-top: 2%;">
+                                            <mat-label style="color:white" for="email">Email</mat-label>
+                                            <mat-icon matPrefix style="color:white"> email</mat-icon>
+                                            <input class="pointer" matInput type="text" style="color:white" formControlName="email">
+                                            <mat-error *ngIf="email.touched && email.invalid">
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-form-field appearance="outline" style="width:60%;color:white">
+                                            <mat-label style="color:white" for="password">Password</mat-label>
+                                            <mat-icon matPrefix>lock</mat-icon>
+                                            <input class="pointer" matInput type="password" style="color:white"
+                                                [type]="hide1 ? 'password' : 'text'" formControlName="password">
+                                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ?
+                                                'visibility_off' :
+                                                'visibility'}}
+                                            </mat-icon>
+                                            <mat-error *ngIf="password.touched && password.invalid">
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </mat-card-content>
+                                <div fxLayout="row" fxLayoutAlign="center center">
+                                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
+                                        (click)="submitform()"></button>
+                                </div>
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                    <h4 style='margin-top:3%;margin-bottom: 2%;'><a style="color: white"
+                                            routerLink="/forgotPassword">Forgot Password?</a></h4>
+                                </div>
+                                <button pButton pRipple type="button" label="sign in with google" icon="pi pi-google"
+                                    class=" p-button-danger p-button-rounded custom-button-width"></button>
+                                <button pButton pRipple type="button" label="sign in with facebook"
+                                    icon="pi pi-facebook" style='margin-bottom: 3%;'
+                                    class="p-button-info p-button-rounded custom-button-width"></button>
+                            </form>
+                        </div>
                     </div>
-                    <div fxLayout="column" fxLayoutAlign="center center">
-                        <h4 style='margin-top:3%'><a style="color: white" routerLink="/forgot">Forgot Password?</a></h4>
-                    </div>
 
-
-                </form>
-
-
-            </mat-card>
-
+                    <div  *ngIf="!isLoginForm">
+                        <div
+                        style="border: 2px solid rgb(195, 252, 249);border-radius: 20px; width: 100%;margin-top: 35%">
+                        <div class="col" style="margin-top:4%;">
+                            <img class="logo" src="../../../assets/images/EP.jpg"> 
+                            <span style="color: white">  WORKBENCH </span>
+                            <span style="color: yellow">360</span>
+                        </div>
+                        <h2 style="margin-top: 5%;color:white">Company Admin Login </h2>
+                        <form [formGroup]="form1" (ngSubmit)="adminform()">
+                            <mat-card-content>
+                                <div>
+                                    <mat-form-field appearance="outline" style="width:60%;margin-top: 2%;">
+                                        <mat-label style="color:white" for="email">Email</mat-label>
+                                        <mat-icon matPrefix style="color:white"> email</mat-icon>
+                                        <input class="pointer" matInput type="text" style="color:white" formControlName="email">
+                                        <mat-error *ngIf="email.touched && email.invalid">
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field appearance="outline" style="width:60%;color:white">
+                                        <mat-label style="color:white" for="password">Password</mat-label>
+                                        <mat-icon matPrefix>lock</mat-icon>
+                                        <input class="pointer" matInput type="password" style="color:white"
+                                            [type]="hide1 ? 'password' : 'text'" formControlName="password">
+                                        <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ?
+                                            'visibility_off' :
+                                            'visibility'}}
+                                        </mat-icon>
+                                        <mat-error *ngIf="password.touched && password.invalid">
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </mat-card-content>
+                            <div fxLayout="row" fxLayoutAlign="center center">
+                                <button pButton pRipple type="button" label="Submit" class="p-button-rounded" style="margin-bottom: 5%;"
+                                    (click)="adminform()"></button>
+                            </div>
+                            </form>
+                            </div>
+                                </div>
+                                
+                </div>
+                </div>
+            </div>
+            <img (click)="adminLogin()" matTooltip="Login as Admin"  style="height: 40px;width:60px;margin-top:2%; filter: invert(100%);" src="../../../assets/images/person.png">
+            <mat-icon style="font-size: 45px; margin-top:20px;color:white;cursor: pointer;" routerLink="/orgCreation">domain</mat-icon>
+           
         </div>
+
     </div>
 </body>

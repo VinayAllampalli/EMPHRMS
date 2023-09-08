@@ -1,48 +1,47 @@
-<div class="container text-center">
-    <div class="d-flex justify-content-center">
-        <mat-card class="card">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Sl.NO</th>
-                        <th scope="col">Task Id</th>
-                        <th scope="col">Assigned By</th>
-                        <th scope="col">Assigned Date</th>
-                        <th scope="col">Task Description</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr *ngFor="let row of res; let i = index">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ row.taskid }}</td>
-                        <td>{{row.assignedname}}</td>
-                        <td>{{ row.assigneddate }}</td>
-                        <td>{{ row.taskdescription }}</td>
-                        <td>{{ row.startdate }}</td>
-                        <td>{{ row.enddate }}</td>
-                        <td>
-                            <button pButton pRipple label="Completed" class="p-button-rounded"
-                                (click)="updateTaskStatus(i, row)"></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="container text-center">
-                <div class="d-flex justify-content-center" *ngIf="len == 0">
-                    <h1 class="row" style="
-              font-family: Brush Script MT, Lucida Handwriting, Cursive;
-              font-weight: 200;
-              color: #203a43;
-              margin-bottom: 3%;
-            ">
-                        No Tasks For You
-                    </h1>
-                    <!-- <img style="height:250px;width:350px;" src="../../../assets/images/Noresultfound.jpg"> -->
-                </div>
-            </div>
-        </mat-card>
+<h1 class="title">All Tasks</h1>
+<div class="search-bar">
+    <input type="text" [(ngModel)]="searchText" (input)="filterTasks()" pInputText placeholder="Search" style="margin-top: 2%;margin-right: 30%;">
+    <span class="search-icon">
+      <i class="pi pi-search"></i>
+    </span>
     </div>
+<div class="tablecard">
+  <p-table [value]="filteredTasks">
+      <ng-template pTemplate="header">
+          <tr>
+              <th pSortableColumn="taskid" style="width:10%">Task Id<p-sortIcon field="taskid"></p-sortIcon></th>
+              <th pSortableColumn="assignedname" style="width:15%">Assigned By<p-sortIcon field="assignedname"></p-sortIcon></th>
+              <th pSortableColumn="taskdescription" style="width:30%">Task Description<p-sortIcon field="taskdescription"></p-sortIcon></th>
+              <th pSortableColumn="startdate" style="width:10%">Start Date<p-sortIcon field="startdate"></p-sortIcon></th>
+              <th pSortableColumn="enddate" style="width:10%">End Date <p-sortIcon field="enddate"></p-sortIcon></th>
+              <th pSortableColumn="status" style="width:10%">Status<p-sortIcon field="status"></p-sortIcon></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-res1 let-i="index">
+          <tr>
+            <td>{{ res1.taskid }}</td>
+            <td>{{res1.assignedname}}</td>
+            <!-- <td>{{ res1.assigneddate | date:'dd-MM-YYYY'}}</td> -->
+            <td>{{ res1.taskdescription }}</td>
+            <td>{{res1.startdate | date:'dd-MM-YYYY'}}</td>
+            <td>{{res1.enddate | date:'dd-MM-YYYY'}}</td>
+            <!-- <td> <button pButton pRipple label="Completed" class="p-button-rounded"
+                (click)="updateTaskStatus(i, res1)"></button>
+            </td> -->
+
+            <td>
+                <ng-container *ngIf="res1.status === 'Completed'; else dropdownTemplate">
+                  Completed
+                </ng-container>
+                <ng-template #dropdownTemplate>
+                    <p-dropdown [options]="getStatusOptions(res1.status)" [(ngModel)]="res1.status" [disabled]="res1.status === 'Completed'"></p-dropdown>
+                  </ng-template>
+                </td>
+                <td>
+                  <button pButton pRipple label="Update" class="p-button-rounded"
+                    (click)="updateTaskStatus(i, res1)" [disabled]="res1.status === 'Completed'"></button>
+                </td>
+          </tr>
+      </ng-template>
+  </p-table>
 </div>

@@ -1,7 +1,20 @@
-<div class="container text-center">
+<div class="d-flex flex-column mb-3">
+    <mat-toolbar style="
+       background-color: #355178;
+      ">
+      <img class="logo" src="../../../assets/images/EP.jpg"> &nbsp; &nbsp;
+      <span style="color: white"> WORKBENCH </span>
+      <span style="color: yellow"> 360</span>
+      <span class="example-spacer"></span>
+      <mat-icon style="color:white;cursor: pointer;" routerLink="/login" matTooltip="login">power_settings_new</mat-icon>
+      </mat-toolbar>
+      </div>
+      
+<h1 class="text">Organization Creation </h1>
+<div class="container text-start">
     <div class="d-flex justify-content-center">
         <mat-card class="card">
-            <mat-card-label class="text">Organization/Company Creation</mat-card-label>
+            <mat-card-label class="text">Organization/Company Details</mat-card-label>
             <form [formGroup]="form" (ngSubmit)="submitform()">
                 <div class="row g-3">
                     <div class="col" style="margin-top:5%">
@@ -29,11 +42,46 @@
                                 </textarea>
                         </mat-form-field>
                     </div>
+                    <hr>
+                    <h1 class="text">Organization Admin Details</h1>
+                    <div class="row">
+                        <mat-form-field appearance="outline" style="width:40%;">
+                            <mat-label>Full Name</mat-label>
+                            <mat-icon matPrefix>person</mat-icon>
+                            <input class="pointer" matInput type="text" formControlName="fullName">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:40%;">
+                            <mat-label for="password">Phone Number</mat-label>
+                            <mat-icon matPrefix>phone</mat-icon>
+                                <input class="pointer" matInput type="tel" formControlName="phoneNo">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row">
+                        <mat-form-field appearance="outline" style="width:40%;">
+                            <mat-label>Email</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input class="pointer" matInput type="text" formControlName="adminMailId">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:40%;">
+                            <mat-label for="password">Password</mat-label>
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <input class="pointer" matInput type="password" [type]="hide1 ? 'password' : 'text'"
+                                formControlName="password">
+                            <mat-icon class="icon-size" matSuffix (click)="hide1 = !hide1">{{hide ?
+                                'visibility_off' :
+                                'visibility'}}
+                            </mat-icon>
+                            <mat-error *ngIf="password.touched && password.invalid">
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                     <div class="container text-center">
                         <button pButton pRipple type="button" label="Submit" class="p-button-rounded"
                             (click)="submitform()" style=" border:2px solid;"></button>
                     </div>
                 </div>
+
             </form>
         </mat-card>
     </div>

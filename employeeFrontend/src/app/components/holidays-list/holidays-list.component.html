@@ -1,1 +1,21 @@
-<p>holidays-list works!</p>
+<div>
+    <mat-card class="card1">
+        <h1 style=" font-family: Brush Script MT, Lucida Handwriting, Cursive;
+          font-weight: 1000;">Holidays List {{currentYear}}</h1>
+        <div class="card-container">
+            <mat-card class="card" *ngFor="let holiday of list">
+                <div class="d-flex">
+                    <div>
+                        <img class="logo1" src="../../../assets/images/cal.jpg">
+                        <h4 class="top-left" style="top:14px;left: 25px;">{{ holiday.holidaydate | date: 'MMM' }}</h4>
+                        <h1 class="top-left"> &nbsp;{{ holiday.holidaydate | date: 'dd' }}</h1>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div>
+                        <h3 class="name">{{holiday?.holidayname}} </h3>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </mat-card>
+</div>

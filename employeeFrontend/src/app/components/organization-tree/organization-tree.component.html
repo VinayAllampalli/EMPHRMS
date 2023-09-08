@@ -1,0 +1,11 @@
+<h1 class="title">Organization Tree</h1>
+    <p-organizationChart [value]="tree" >
+        <ng-template let-node pTemplate="v" >
+        <div class="p-2 text-center">
+            <img class="image" [src]="node.data.image">
+            <div>{{ node.data.name }}</div>
+        </div>
+        </ng-template>
+    </p-organizationChart>
+
+  

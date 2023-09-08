@@ -114,10 +114,6 @@
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" style="width:70%;">
-                                    <mat-label>Employee Code</mat-label>
-                                    <input class="pointer" matInput type="text" formControlName="EmpCode">
-                                </mat-form-field>
-                                <mat-form-field appearance="outline" style="width:70%;">
                                     <mat-label>Department</mat-label>
                                     <input class="pointer" matInput type="text" formControlName="department">
                                 </mat-form-field>
@@ -130,15 +126,31 @@
                                         'visibility'}}
                                     </mat-icon>
                                 </mat-form-field>
+                                <mat-card style="width:70%;margin-left: 16%;">
+                                    <h3>Probition Period
+                                        <mat-slide-toggle (change)="Probition($event)"></mat-slide-toggle>
+                                    </h3>
+                                </mat-card>
                             </div>
+                           
                             <div class="col">
                                 <mat-form-field appearance="outline" style="width:70%;">
                                     <mat-label>Reporting Manager</mat-label>
-                                    <input class="pointer" matInput type="text" formControlName="ReportingManager">
+                                    <mat-select formControlName="ReportingManager">
+                                        <mat-option *ngFor="let x of reportingManger" [value]="x" >
+                                            {{x}}
+                                        </mat-option>
+                                      </mat-select>
+                                    <!-- <input class="pointer" matInput type="text" formControlName="ReportingManager"> -->
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" style="width:70%;">
                                     <mat-label>Reporting Manger Id</mat-label>
-                                    <input class="pointer" matInput type="text" formControlName="ReportingMangerID">
+                                    <mat-select formControlName="ReportingMangerID">
+                                        <mat-option *ngFor="let r of rmId" [value]="r" >
+                                            {{r}}
+                                        </mat-option>
+                                      </mat-select>
+                                    <!-- <input class="pointer" matInput type="text" formControlName="ReportingMangerID"> -->
                                 </mat-form-field>
                                 <mat-form-field appearance="outline" style="width:70%;">
                                     <mat-label>Total CTC / Month</mat-label>
@@ -149,24 +161,13 @@
                                     <mat-label>Company Mail Id</mat-label>
                                     <input class="pointer" matInput type="email" formControlName="CompanymailId">
                                 </mat-form-field>
-
-                                <div class="row">
-                                    <mat-card style="width:50%;margin-left:18%">
-                                        <h3>Probition Period
-                                            <mat-slide-toggle (change)="Probition($event)"></mat-slide-toggle>
-
-                                        </h3>
-                                    </mat-card>
-                                </div>
-
                             </div>
                             <!-- <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch> -->
-
                         </div>
                     </form>
                     <div class="container text-start">
                         <h3 style="color:#203a43; font-family: Brush Script MT, Lucida Handwriting, Cursive;
-                font-weight: 1000;">Employee Benfits</h3>
+                font-weight: 1000;margin-top: 2%;">Employee Benfits</h3>
                         <hr style="margin:0%;color:#203a43;">
                     </div>
                     <div class="d-flex justify-content-center" style="margin-top:20px;margin-bottom:20px;">
@@ -205,73 +206,15 @@
         </div>
     </mat-tab>
     <mat-tab label="All Employees">
-      <div class="d-flex flex-row-reverse" style='margin-top: 3%;'>
+      <!-- <div class="d-flex flex-row-reverse" style='margin-top: 3%;'>
             
             <button pButton pRipple type="button" class="p-button-rounded p-button-primary"
                 (click)="showTableView = false">Other Format View</button> &nbsp; &nbsp;
                 <button pButton pRipple type="button" class="p-button-rounded p-button-primary"
                 (click)="showTableView = true">Table View</button>
-                </div>
-       
-        <div *ngIf="showTableView">
-            <div class="row">
-                <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Search"
-                    style="width:20%;margin-top: 2%;margin-left: 2%;">
-                <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"
-                    style="margin-top:3%" (click)="searchTerm=''"></button>
-            </div>
-            <table class="table table-striped" style="margin-top:1%">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;max-width:200px">EmpCode</th>
-                        <th>Name</th>
-                        <th>Phone.No</th>
-                        <th>Email</th>
-                        <th>DOB</th>
-                        <th>Address</th>
-                        <th>Role</th>
-                        <th>ReportingMangerID</th>
-                        <th>Department</th>
-                        <th>DOJ</th>
-                        <th>Aadhar.No</th>
-                        <th>Pan.No</th>
-                        <th>Pf.No</th>
-                        <th>BankAcc.No</th>
-                        <th>BankIFSC.Code</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr *ngFor="let row of filterRes(),let i = index">
-                        <td>{{ row.empcode }}</td>
-                        <td>{{row.firstname}} {{row.lastname}}</td>
-                        <td>{{ row.phoneno }}</td>
-                        <td>{{ row.email }}</td>
-                        <td>{{ row.dob }}</td>
-                        <td>{{ row.address }}</td>
-                        <td>{{ row.role }}</td>
-                        <td>{{ row.reportingmangerid }}</td>
-                        <td>{{ row.department }}</td>
-                        <td>{{ row.doj }}</td>
-                        <td>{{ row.aadharnumber }}</td>
-                        <td>{{ row.pannumber }}</td>
-                        <td>{{ row.uannumber }}</td>
-                        <td>{{ row.bankaccnumber }}</td>
-                        <td>{{ row.bankifsccode }}</td>
-                        <td>
-                            <button pButton pRipple type="button" icon="pi pi-pencil"
-                                class="p-button-rounded p-button-primary" (click)="update()"></button>
-                        </td>
-                        <td>
-                            <button pButton pRipple type="button" icon="pi pi-trash"
-                                class="p-button-rounded p-button-danger" (click)="Delete(i, row)"></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-        <div *ngIf="!showTableView">
+                </div> -->
+                
+        <!-- <div *ngIf="!showTableView"> -->
             <div class="container text-start">
                 <div class="row">
                     <div class="card" style="width: 35%;">
@@ -306,7 +249,7 @@
                                 <div class="d-flex flex-row">
                                 
                                         <div class="col">
-                                            <h2>Name: {{value.firstname}} {{value.lastname}}</h2>
+                                            <h2>Name:{{value.firstname}} {{value.lastname}}</h2>
                                             <h2>Email: {{value.email}}</h2>
                                             <h2>Phone number: {{value.phoneno}}</h2>
                                             <h2>D.O.B: {{value.dob}}</h2>
@@ -333,6 +276,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </mat-tab>
 </mat-tab-group>

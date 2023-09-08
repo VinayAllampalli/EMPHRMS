@@ -34,6 +34,13 @@ import { LeaveApprovalComponent } from './components/leave-approval/leave-approv
 import { QrgeneratorComponent } from './components/qrgenerator/qrgenerator.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { HolidaysListComponent } from './components/holidays-list/holidays-list.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginWithGoogleComponent } from './components/login-with-google/login-with-google.component';
+import { OrganizationTreeComponent } from './components/organization-tree/organization-tree.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { HolidaysComponent } from './components/holidays/holidays.component';
+
+
 
 
 
@@ -93,10 +100,11 @@ const ngxUiLoaderConfig:NgxUiLoaderConfig =
     LeaveApprovalComponent,
     QrgeneratorComponent,
     HolidaysListComponent,
-
-
-    
-   
+    ForgotPasswordComponent,
+    LoginWithGoogleComponent,
+    OrganizationTreeComponent,
+    AdminDashboardComponent,
+    HolidaysComponent,
   ],
   imports: [
     BrowserModule,

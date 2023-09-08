@@ -1,21 +1,29 @@
 .card{
-    margin-top: 5%;
-    text-align: center;
+    margin-top: 2%;
+    text-align: start;
     color: #203a43;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
    
 }
 .circle {
-    margin-top: 5%;
+    margin-top: 2%;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border:2px solid;border-color:#203a43;
+    border:2px solid;border-color:#355178;
   }
   .data{
     font-family: Brush Script MT, Lucida Handwriting, Cursive;
     font-weight: 200;
-    color:#203a43
+    color:#203a43;
+    margin-left:7%;
 
 }
+.data1{
+  font-family: Brush Script MT, Lucida Handwriting, Cursive;
+  font-weight: 200;
+  color:#203a43;
+  text-align: center;
+}
+

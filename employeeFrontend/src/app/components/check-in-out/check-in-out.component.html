@@ -1,4 +1,6 @@
-<div class="container text-center">
+
+<h1 class="text" style="margin-left: 8%;">Check In/Out</h1>
+<div class="container text-start">
   <div class="d-flex justify-content-center">
     <mat-card class="card">
       <table class="table">
@@ -25,4 +27,99 @@
       </table>
     </mat-card>
   </div>
+
+  <hr style="color:#355178">
+
+  <h1 class="text">Attendance</h1>
+<div style="margin-left: 6%;margin-top: 2%;">
+  <p-calendar [(ngModel)]="date9" view="month" dateFormat="mm/yy" [readonlyInput]="true" inputId="monthpicker" placeholder="Select Month and Year"></p-calendar> &nbsp; &nbsp; &nbsp;    
+      
+  <button pButton pRipple type="button" (click)="submit()" label="Search"
+  value="checkOut" class="p-button-rounded p-button-secondary" >
+  <i class="pi pi-search"></i>&nbsp;
+  </button>
 </div>
+
+<div class="container text-start">
+  <div class="d-flex justify-content-start">
+    <mat-card class="card" style="width:100%;margin-top:1%;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Effective Hours</th>
+            <th scope="col">ClockIn</th>
+            <th scope="col">ClockOut</th>
+            <th scope="col">Location</th>
+            <th scope="col">Log</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let row of value; let i = index">
+              <td>{{ i + 1 }}</td>
+              <!-- <td>{{row.Onlydate}}</td> -->
+              <td>{{row.log_date}}</td>
+              <td>{{row.totalhours}}</td>
+              <td><mat-icon style="color:green">call_made</mat-icon>{{row.checkin_time}}</td>
+              <td><mat-icon style="color:red">call_received</mat-icon>{{row.checkout_time}}</td>
+              <td>{{row.location}}</td>
+    
+              <td>	<mat-icon style="color:green;cursor:pointer;" (mouseover)="show(i)" (mouseout)="hide(i)" >check_circle</mat-icon>
+                <mat-card *ngIf="showit && i === currentIdx" style=" color:#203a43;
+                font-family: Brush Script MT, Lucida Handwriting, Cursive;
+                border:2px solid;
+                border-color:#355178;">
+                <h3>EMPLOYEE CODE : {{empcode}}</h3>
+                <hr>
+                <div class="d-flex flex-row ">
+                  <!-- <p class="d-flex justify-content-start" ><mat-icon style="color:green">call_made</mat-icon>In Time: {{row.checkin_time}}</p> &nbsp; &nbsp; &nbsp; &nbsp; -->
+                  <p class="d-flex justify-content-start">Longitude {{row.longitude}}</p>
+               </div>
+               <div class="d-flex flex-row ">
+                <!-- <p class="d-flex justify-content-start" ><mat-icon style="color:red">call_received</mat-icon>Out Time: {{row.checkout_time}}</p> &nbsp; &nbsp; &nbsp;  -->
+                <p class="d-flex justify-content-start">Latitude {{row.latitude}} </p>
+             </div>
+              </mat-card>
+
+                </td>
+              </tr>
+             
+        </tbody>
+      </table>
+      <div class="container text-center">
+        <div class="d-flex justify-content-center" *ngIf="len == 0">
+            <h1 class="row" style="
+      font-family: Brush Script MT, Lucida Handwriting, Cursive;
+      font-weight: 200;
+      color: #203a43;
+      margin-bottom: 3%;
+    ">
+                No Logs
+            </h1>
+            <!-- <img style="height:250px;width:350px;" src="../../../assets/images/Noresultfound.jpg"> -->
+        </div>
+    </div>
+    </mat-card>
+  </div>
+ 
+</div>
+
+
+
+
+<!-- 
+    https://youtu.be/5RzGEZH4gdw 
+    https://fullcalendar.io/docs/angular
+     with help of this third party one i developed this calendar part full calendar / event binding
+
+-->
+<!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
+<div class="d-flex flex-column">
+  <!-- <h1 class="font" style="margin-left:2%">Employee Code : {{empcode}}</h1> -->
+  
+  <div class="field col-12 md:col-4 d-flex justify-content-start" style="margin-left: 13%;margin-top: 2%;">
+     
+    </div>
+   
+    </div>

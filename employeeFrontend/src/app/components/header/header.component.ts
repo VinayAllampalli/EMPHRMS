@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,18 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   role:any;
 
-  constructor(public router:Router) { }
+  constructor(public router:Router,
+    private dialog: MatDialog) { }
+  
 
   ngOnInit(): void {
     this.role=localStorage.getItem('role')
+    console.log(this.role)
+    if (this.role === 'companyAdmin') {
+      this.router.navigateByUrl('/header/adminDashboard');
+    } else {
+      this.router.navigateByUrl('/header/dashboard');
+    }
   }
   logout(){
     localStorage.clear()
@@ -21,5 +30,4 @@ export class HeaderComponent implements OnInit {
    checkinOut(){
     this.router.navigate(['header/CheckInOut']);
    }
-
 }

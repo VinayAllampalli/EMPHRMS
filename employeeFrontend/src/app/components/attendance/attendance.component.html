@@ -5,17 +5,17 @@
 
 -->
 <!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
-<div class="d-flex flex-column">
+<!-- <div class="d-flex flex-column"> -->
 <!-- <h1 class="font" style="margin-left:2%">Employee Code : {{empcode}}</h1> -->
 
-<div class="field col-12 md:col-4 d-flex justify-content-center">
+<!-- <div class="field col-12 md:col-4 d-flex justify-content-center"> -->
     <p-calendar [(ngModel)]="date9" view="month" dateFormat="mm/yy" [readonlyInput]="true" inputId="monthpicker" placeholder="Select Month and Year"></p-calendar> &nbsp; &nbsp; &nbsp;    
     
     <button pButton pRipple type="button" (click)="submit()" label="Search"
     value="checkOut" class="p-button-rounded p-button-secondary" >
     <i class="pi pi-search"></i>&nbsp;
     </button>
-</div>
+<!-- </div> -->
 
 <div class="container text-center">
     <div class="d-flex justify-content-center">
@@ -43,7 +43,7 @@
                   <mat-card *ngIf="showit && i === currentIdx" style=" color:#203a43;
                   font-family: Brush Script MT, Lucida Handwriting, Cursive;
                   border:2px solid;
-                  border-color:#203a43;">
+                  border-color:#355178;">
                   <h3>EMPLOYEE CODE : {{empcode}}</h3>
                   <hr>
                   <div class="d-flex flex-row ">
@@ -79,7 +79,7 @@
    
   </div>
  
-  </div>
+  <!-- </div> -->
 
 
  

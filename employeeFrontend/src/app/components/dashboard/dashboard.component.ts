@@ -8,6 +8,8 @@ import { Router,ActivatedRoute} from '@angular/router';
 import { LeavesComponent } from '../leaves/leaves.component';
 import * as echarts from 'echarts';
 import { EChartsOption } from 'echarts/types/dist/echarts';
+import { MatDialog } from '@angular/material/dialog';
+import { HolidaysListComponent } from '../holidays-list/holidays-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,10 +44,15 @@ export class DashboardComponent implements OnInit {
   SL: any;
   empcode: any;
   chartData: any;
+  currentYear:any;
+  todayHoliday:any;
+  upcomingHoliday:any;
+
   constructor(public datepipe:DatePipe,
     public backend:BackendService,
     private fb:FormBuilder,
     private router:Router, 
+    public dialog: MatDialog
    ) { }
 
   ngOnInit(): void {
@@ -63,6 +70,8 @@ export class DashboardComponent implements OnInit {
     this.getFeed();  
     this.empcode = localStorage.getItem('empcode'); 
     this.getallLeaves();
+    this.currentYear = moment().year();
+    this.getholidayslist()
    
   
 
@@ -231,7 +240,41 @@ getallLeaves() {
     clockIn(){
       this.router.navigate(['header/checkInOut'])
     }
- 
+
+    getholidayslist() {
+      this.backend.getallholidays(this.currentYear,this.compId).subscribe((data: any) => {
+        let list = data?.result;
+        let upcomingHoliday = null;
+        const currentDate = moment().format('YYYY-MM-DD');
+    
+        for (let i = 0; i < list.length; i++) {
+          const holidayDate = moment(list[i].holidaydate, 'YYYY-MM-DD').format('YYYY-MM-DD');
+          console.log(holidayDate);
+          if (currentDate === holidayDate) {
+            this.todayHoliday = list[i];
+            console.log("-->", this.todayHoliday);
+          } else if (moment(holidayDate).isAfter(currentDate)) {
+            if (!upcomingHoliday || moment(holidayDate).isBefore(upcomingHoliday.holidaydate)) {
+              upcomingHoliday = list[i];
+            }
+          }
+        }
+        this.upcomingHoliday = upcomingHoliday;
+      });
+    }
+
+    allHolidays(){
+        this.router.navigate(['header/holidays']);
+      // this.dialog.open(HolidaysListComponent,{
+      //   width:'100%',
+      //   height:'100%'
+      
+      // })
+    }
 }
+
+    
+ 
+
 
 

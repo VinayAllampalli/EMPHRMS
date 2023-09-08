@@ -3,6 +3,15 @@
     text-align: center;
     color: #203a43;
     border:2px solid;
-    border-color:#203a43;
+    border-color:#355178;
     width: 95%;
+}
+.title{
+    color: #203a43; 
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    margin-left: 2%;
+    font-weight: 400;
+    text-align: start;
+    font-size:x-large;
+    margin-top: 2%;
 }

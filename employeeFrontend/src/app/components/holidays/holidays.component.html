@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5 ">
+            <div class="card">
+                <div class="d-flex justify-content-between">
+                    <h2 class='label'>Add Holidays</h2>
+                    <p-inputSwitch color="primary"
+                        [pTooltip]="useSelect ? 'Switch to Enter Holiday' : 'Switch to Select Holiday'"
+                        tooltipPosition="bottom" (click)="toggleField()" class="tog"></p-inputSwitch>
+                </div>
+                <form form [formGroup]="form" (ngSubmit)="submitform()">
+                    <div class="col">
+                        <mat-form-field appearance="outline" class="feild">
+                            <mat-label>Select/Enter Name Of the Holiday</mat-label>
+                            <!-- Use the ngIf directive to conditionally display either the select or the input -->
+                            <mat-select *ngIf="useSelect" formControlName="Holiday" placeholder="Select Holiday Name">
+                                <mat-option *ngFor="let lT of holidays" [value]="lT">
+                                    {{lT.holidayname}}
+                                </mat-option>
+                            </mat-select>
+                            <input *ngIf="!useSelect" matInput placeholder="Enter Holiday Name"
+                                formControlName="Holiday">
+                        </mat-form-field>
+                    </div>
+                    <div calss="col">
+                        <mat-form-field appearance="outline" class="feild">
+                            <mat-label>Holiday Date</mat-label>
+                            <input matInput [matDatepicker]="date" [min]="currentDate" formControlName="HolidayDate">
+                            <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                            <mat-datepicker #date></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </form>
+                <div class="container text-center">
+
+                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="submitform()"
+                        style=" border:2px solid;margin-bottom: 5px;
+    border-color:#fdfdfd;"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+          <div class="card">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card2">
+    <p-table [value]="holiday">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="slno" style="width:20%">Sl.NO<p-sortIcon field="taskid"></p-sortIcon>
+                </th>
+                <th pSortableColumn="holidayDate" style="width:40%">Holiday Date<p-sortIcon
+                        field="assignedname"></p-sortIcon></th>
+                <th pSortableColumn="HolidayName" style="width:40%">Hoilday Name<p-sortIcon
+                        field="taskdescription"></p-sortIcon></th>
+                <th pSortableColumn="HolidayName" style="width:40%">Action<p-sortIcon
+                        field="taskdescription"></p-sortIcon></th>
+            
+                    </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-holiday>
+            <tr>
+                <td>{{ holiday.index }}</td>
+                <td>{{holiday.holidayname}}</td>
+                <td>{{ holiday.holidaydate | date:'dd-MM-YYYY'}}</td>
+                <td>
+                    <i class="pi pi-trash" style="font-size: 1rem;color:red; cursor: pointer;" (click)="delete(holiday.id, holiday.holidayname)"></i>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

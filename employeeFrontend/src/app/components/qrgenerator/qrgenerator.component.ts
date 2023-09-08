@@ -11,10 +11,19 @@ export class QrgeneratorComponent implements OnInit {
   qrCode!: ElementRef;
   form:any;
   showQRCode = false;
+  imageSources: string[] = [
+    'assets/images/cal.jpg',
+    'assets/images/EP.jpg',
+    'assets/images/in.jpg',
+    'assets/images/tree.jpg'
+  ];
+
+  currentImageIndex: number = 0;
   constructor(private fb:FormBuilder,) { }
 
   ngOnInit(): void {
     this.formbuilder()
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this));
   }
   formbuilder() {
     this.form = this.fb.group({
@@ -35,5 +44,36 @@ export class QrgeneratorComponent implements OnInit {
     console.log(imageDataUrl);
   }
 
-  
+  get currentImage(): string {
+    console.log('Current image:', this.imageSources[this.currentImageIndex]);
+    return this.imageSources[this.currentImageIndex];
+  }
+
+  onKeyDown(event: KeyboardEvent) {
+    console.log('Key pressed:', event.key);
+    if (event.key === 'ArrowRight') {
+      this.showNextImage();
+    } else if (event.key === 'ArrowLeft') {
+      this.showPreviousImage();
+    }
+  }
+
+  showNextImage() {
+    this.currentImageIndex++;
+    console.log("clicking on next image ")
+    if (this.currentImageIndex >= this.imageSources.length) {
+      this.currentImageIndex = 0; // Wrap around to the first image
+    }
+  }
+
+  showPreviousImage() {
+    this.currentImageIndex--;
+    console.log("clicking on previous image ")
+    if (this.currentImageIndex < 0) {
+      this.currentImageIndex = this.imageSources.length - 1; // Wrap around to the last image
+    }
+  }
 }
+
+  
+

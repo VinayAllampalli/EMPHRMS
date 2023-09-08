@@ -2,7 +2,8 @@
     flex: 1 1 auto;
   }
   .menu:hover{
-    background-image: url('../../../assets/images/Gray-plain-website-background.jpg');
+    /* background-image: url('../../../assets/images/Gray-plain-website-background.jpg'); */
+    background-color:#355178; 
     color: white;
   }
   .logo {

@@ -1,4 +1,6 @@
 <mat-card class="card">
+    <h2 class="data1" ><img style="width: 50px;height: 50px;" src="../../../assets/images/EP.jpg">{{company}}</h2>
+    <hr style="margin-top: 2%; border: 1px solid #203a43; opacity: 1">
     <div class="d-flex justify-content-center">
         <img class="circle" src="{{ pic }}">
     </div>
@@ -9,7 +11,8 @@
             <h2 class="data">Dept : {{details.department}}</h2>
             <h2 class="data">Ph.No : {{details.phoneno}}</h2>
             <hr style="margin-top: 2%; border: 1px solid #203a43; opacity: 1">
-            <h2 class="data" >{{company}}</h2>
+             
+            <h3 class="data1" *ngFor="let x of compData">{{x.companyaddress}}</h3>
         </span>
     </div>
 </mat-card>

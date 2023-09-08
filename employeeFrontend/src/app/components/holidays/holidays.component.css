@@ -1,0 +1,31 @@
+.card{
+    border-radius: 2%;
+    border:2px solid;border-color:#355178;
+    margin-top: 10%;
+}
+
+.label{
+    margin-left: 2%; 
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    font-weight: 500; 
+}
+
+.feild{
+    width:75%;margin-left:12%;
+    margin-top: 2%;
+}
+
+.tog{
+    margin-top: 2%;
+    margin-right: 3%;
+}
+
+.card2{
+    border-radius: 2%;
+    border:2px solid;
+    border-color:#355178;
+    width: 80%;
+    margin: 10% auto 20px auto; /* Center vertically and horizontally */
+    padding: 20px; 
+
+}

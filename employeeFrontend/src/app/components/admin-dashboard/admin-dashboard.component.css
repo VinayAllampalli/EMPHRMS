@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    border:2px solid;
+    border-color:#355178;
+}
+
+.chart {
+    width: 300px;
+    height: 300px;
+    margin: auto; /* Center horizontally */
+}
+
+.card1 {
+    justify-content: center;
+    align-items: center;
+    border:2px solid;
+    border-color:#355178;
+   
+}
+.card-container {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+.fnt{
+    color:#203a43;
+    font-family: Brush Script MT, Lucida Handwriting, Cursive;
+    font-weight: 600;
+   
+}
+
+
+
+
+
+
